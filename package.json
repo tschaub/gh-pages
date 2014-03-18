@@ -1,0 +1,41 @@
+{
+  "name": "gh-pages",
+  "version": "0.0.0",
+  "description": "Publish to a gh-pages branch on GitHub (or any other branch on any other remote)",
+  "keywords": [
+    "git",
+    "gh-pages",
+    "github"
+  ],
+  "author": {
+    "name": "Tim Schaub",
+    "url": "http://tschaub.net/"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://tschaub.mit-license.org/"
+    }
+  ],
+  "homepage": "https://github.com/tschaub/gh-pages",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tschaub/gh-pages.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tschaub/gh-pages/issues"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "node tasks.js lint test"
+  },
+  "dependencies": {
+    "q": "~1.0.1",
+    "q-io": "~1.11.0"
+  },
+  "devDependencies": {
+    "glob": "~3.2.9",
+    "mocha": "~1.18.2",
+    "jshint": "~2.4.4"
+  }
+}
