@@ -41,6 +41,7 @@
   "devDependencies": {
     "glob": "~3.2.9",
     "mocha": "~1.18.2",
-    "jshint": "~2.4.4"
+    "jshint": "~2.4.4",
+    "chai": "~1.9.1"
   }
 }
