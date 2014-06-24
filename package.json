@@ -36,10 +36,9 @@
     "async": "0.2.9",
     "wrench": "1.5.1",
     "lodash": "~2.4.1",
-    "grunt": "~0.4.5"
+    "glob": "~4.0.2"
   },
   "devDependencies": {
-    "glob": "~3.2.9",
     "mocha": "~1.18.2",
     "jshint": "~2.4.4",
     "chai": "~1.9.1"
