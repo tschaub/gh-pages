@@ -68,7 +68,7 @@ The default options work for simple cases cases.  The options described below le
 
 
 #### <a id="optionssrc">options.src</a>
- * type: `string`
+ * type: `string` or `array`
  * default: `'**/*'`
 
 The [minimatch](https://github.com/isaacs/minimatch) pattern used to select which files should be published.
