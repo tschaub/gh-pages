@@ -1,6 +1,6 @@
 {
   "name": "gh-pages",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Publish to a gh-pages branch on GitHub (or any other branch on any other remote)",
   "keywords": [
     "git",
@@ -11,6 +11,9 @@
     "name": "Tim Schaub",
     "url": "http://tschaub.net/"
   },
+  "contributors": [
+    "Alan Hoffmeister <alanhoffmeister@gmail.com>"
+  ],
   "licenses": [
     {
       "type": "MIT",
