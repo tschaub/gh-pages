@@ -30,17 +30,21 @@
     "test": "node tasks.js lint test"
   },
   "dependencies": {
+    "async": "0.2.9",
+    "commander": "~2.8.1",
+    "glob": "~4.0.2",
+    "graceful-fs": "2.0.1",
+    "lodash": "~2.4.1",
     "q": "~1.0.1",
     "q-io": "~1.11.0",
-    "graceful-fs": "2.0.1",
-    "async": "0.2.9",
-    "wrench": "1.5.1",
-    "lodash": "~2.4.1",
-    "glob": "~4.0.2"
+    "wrench": "1.5.1"
   },
   "devDependencies": {
     "mocha": "~1.18.2",
     "jshint": "~2.4.4",
     "chai": "~1.9.1"
+  },
+  "bin": {
+    "gh-pages": "bin/gh-pages"
   }
 }
