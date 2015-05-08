@@ -291,25 +291,25 @@ Note that this plugin requires Git 1.7.6 or higher (because it uses the `--exit-
 
 `gh-pages` can be used in Command line.
 
-1. Scripts
+### scripts task
 
-   ```shell
-   "scripts": {
-     "deploy": "npm run gh-pages",
-     "gh-pages": "gh-pages -d dist -b gh-pages"
-   }
-   ```
+```shell
+"scripts": {
+  "deploy": "npm run gh-pages",
+  "gh-pages": "gh-pages -d dist -b gh-pages"
+}
+```
 
-   ```shell
-   npm run deploy
-   ```
+```shell
+npm run deploy
+```
 
-2. Global
+### Global
 
-   ```shell
-   npm install gh-pages -g
-   gh-pages -d dist -b gh-pages
-   ```
+```shell
+npm install gh-pages -g
+gh-pages -d dist -b gh-pages
+```
 
 Cli support options below:
 
