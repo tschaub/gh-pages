@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+var ghpages = require('../lib/index');
+var program = require('commander');
+var path = require('path');
+ 
+program
+  .version(require('../package').version)
+  .option('-d, --dist <dist>',
+      'base directory for all source files')
+  .option('-s, --src <src>',
+      'pattern used to select which files should be published', '**/*')
+  .option('-b, --branch <branch>',
+      'name of the branch you\'ll be pushing to', 'gh-pages')
+  .parse(process.argv);
+
+ghpages.publish(path.join(process.cwd(), program.dist), {
+  branch: program.branch,
+  src: program.src,
+  logger: function(message) {
+    console.log(message);
+  }
+}, function() {
+  console.log('Published');
+});
