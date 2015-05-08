@@ -11,7 +11,7 @@ program
   .option('-s, --src <src>',
       'pattern used to select which files should be published', '**/*')
   .option('-b, --branch <branch>',
-      'name of the branch you\'ll be pushing to', 'gh-page')
+      'name of the branch you\'ll be pushing to', 'gh-pages')
   .parse(process.argv);
 
 ghpages.publish(path.join(process.cwd(), program.dist), {
