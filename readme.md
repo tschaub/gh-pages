@@ -281,38 +281,26 @@ ghpages.publish(path.join(__dirname, 'build'), {
 }, callback);
 ```
 
-## Dependencies
+## Command Line Utility
 
-Note that this plugin requires Git 1.7.6 or higher (because it uses the `--exit-code` option for `git ls-remote`).  If you'd like to see this working with earlier versions of Git, please [open an issue](https://github.com/tschaub/gh-pages/issues).
+Installing the package creates a `gh-pages` command line utility.  Run `gh-pages --help` to see a list of supported options.
 
-[![Current Status](https://secure.travis-ci.org/tschaub/gh-pages.png?branch=master)](https://travis-ci.org/tschaub/gh-pages)
-
-## Cli
-
-`gh-pages` can be used in Command line.
-
-### scripts task
+With a local install of `gh-pages`, you can set up a package script with something like the following:
 
 ```shell
 "scripts": {
-  "deploy": "npm run gh-pages",
-  "gh-pages": "gh-pages -d dist -b gh-pages"
+  "deploy": "gh-pages -d dist"
 }
 ```
+
+And then to publish everything from your `dist` folder to your `gh-pages` branch, you'd run this:
 
 ```shell
 npm run deploy
 ```
 
-### Global
+## Dependencies
 
-```shell
-npm install gh-pages -g
-gh-pages -d dist -b gh-pages
-```
+Note that this plugin requires Git 1.7.6 or higher (because it uses the `--exit-code` option for `git ls-remote`).  If you'd like to see this working with earlier versions of Git, please [open an issue](https://github.com/tschaub/gh-pages/issues).
 
-Cli support options below:
-
-* `-d --dir` basePath
-* `-s --src` options.src
-* `-b --branch` options.branch
+[![Current Status](https://secure.travis-ci.org/tschaub/gh-pages.png?branch=master)](https://travis-ci.org/tschaub/gh-pages)
