@@ -11,12 +11,7 @@
     "name": "Tim Schaub",
     "url": "http://tschaub.net/"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://tschaub.mit-license.org/"
-    }
-  ],
+  "license": "MIT",
   "homepage": "https://github.com/tschaub/gh-pages",
   "repository": {
     "type": "git",
