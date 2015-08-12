@@ -8,7 +8,7 @@ Publish files to a `gh-pages` branch on GitHub (or any other branch anywhere els
 npm install gh-pages --save-dev
 ```
 
-This module requires Git `>=1.7.6`.
+This module requires Git `>=1.9`.
 
 ## Basic Usage
 
@@ -301,6 +301,6 @@ npm run deploy
 
 ## Dependencies
 
-Note that this plugin requires Git 1.7.6 or higher (because it uses the `--exit-code` option for `git ls-remote`).  If you'd like to see this working with earlier versions of Git, please [open an issue](https://github.com/tschaub/gh-pages/issues).
+Note that this plugin requires Git 1.9 or higher (because it uses the `--exit-code` option for `git ls-remote`).  If you'd like to see this working with earlier versions of Git, please [open an issue](https://github.com/tschaub/gh-pages/issues).
 
 [![Current Status](https://secure.travis-ci.org/tschaub/gh-pages.png?branch=master)](https://travis-ci.org/tschaub/gh-pages)
