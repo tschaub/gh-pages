@@ -12,12 +12,15 @@ program
       'pattern used to select which files should be published', '**/*')
   .option('-b, --branch <branch>',
       'name of the branch you\'ll be pushing to', 'gh-pages')
+  .option('-m, --message <message>',
+      'commit message', 'Updates')
   .option('-t, --dotfiles', 'Include dotfiles')
   .parse(process.argv);
 
 ghpages.publish(path.join(process.cwd(), program.dist), {
   branch: program.branch,
   src: program.src,
+  message: program.message,
   dotfiles: !!program.dotfiles,
   logger: function(message) {
     console.log(message);
