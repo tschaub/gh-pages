@@ -281,6 +281,24 @@ ghpages.publish(path.join(__dirname, 'build'), {
 }, callback);
 ```
 
+#### <a id="optionsdest">options.dest</a>
+ * type: `string`
+ * default: `'.'`
+
+The destination folder within the destination branch/repository.
+
+Example use of the `dest` option:
+
+```js
+/**
+ * Place content in the static/project subdirectory of the target
+ * branch/repository. If removing files, only remove static/project.
+ */
+ghpages.publish(path.join(__dirname, 'build'), {
+  dest: 'static/project'
+}, callback);
+```
+
 ## Command Line Utility
 
 Installing the package creates a `gh-pages` command line utility.  Run `gh-pages --help` to see a list of supported options.
