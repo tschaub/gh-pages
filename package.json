@@ -26,21 +26,20 @@
     "test": "mocha --recursive test"
   },
   "dependencies": {
-    "async": "0.2.9",
-    "commander": "~2.8.1",
+    "async": "1.5.0",
+    "commander": "2.9.0",
     "glob": "~4.0.2",
-    "graceful-fs": "2.0.1",
+    "graceful-fs": "4.1.2",
     "lodash": "~2.4.1",
-    "q": "~1.0.1",
-    "q-io": "~1.11.0",
-    "wrench": "1.5.1"
+    "q": "1.4.1",
+    "q-io": "1.13.2",
+    "wrench": "1.5.8"
   },
   "devDependencies": {
-    "chai": "~1.9.1",
+    "chai": "^3.4.1",
     "eslint": "^1.10.3",
     "eslint-config-tschaub": "^2.0.0",
-    "jshint": "~2.4.4",
-    "mocha": "~1.18.2"
+    "mocha": "^2.3.4"
   },
   "bin": {
     "gh-pages": "bin/gh-pages"
