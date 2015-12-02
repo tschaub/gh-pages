@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 var path = require('path');
 
 var assert = require('../helper').assert;
