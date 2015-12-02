@@ -22,7 +22,8 @@
   },
   "main": "lib/index.js",
   "scripts": {
-    "test": "node tasks.js lint test"
+    "pretest": "eslint lib test",
+    "test": "mocha --recursive test"
   },
   "dependencies": {
     "async": "0.2.9",
@@ -35,11 +36,16 @@
     "wrench": "1.5.1"
   },
   "devDependencies": {
-    "mocha": "~1.18.2",
+    "chai": "~1.9.1",
+    "eslint": "^1.10.3",
+    "eslint-config-tschaub": "^2.0.0",
     "jshint": "~2.4.4",
-    "chai": "~1.9.1"
+    "mocha": "~1.18.2"
   },
   "bin": {
     "gh-pages": "bin/gh-pages"
+  },
+  "eslintConfig": {
+    "extends": "tschaub"
   }
 }
