@@ -1,3 +1,7 @@
+## v0.7.0
+
+* [#32](https://github.com/tschaub/gh-pages/pull/32) - Remove dependency on Lodash. ([@tschaub](https://github.com/tschaub))
+
 ## v0.6.0
 
  * [#31](https://github.com/tschaub/gh-pages/pull/31) - Updated linter and assorted dependencies. ([@tschaub](https://github.com/tschaub))
