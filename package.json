@@ -22,7 +22,7 @@
   },
   "main": "lib/index.js",
   "scripts": {
-    "pretest": "eslint lib test",
+    "pretest": "eslint lib test bin/gh-pages",
     "test": "mocha --recursive test"
   },
   "dependencies": {

@@ -25,12 +25,12 @@ ghpages.publish(path.join(process.cwd(), program.dist), {
   dotfiles: !!program.dotfiles,
   add: !!program.add,
   logger: function(message) {
-    console.log(message);
+    process.stderr.write(message + '\n');
   }
 }, function(err) {
-  if (err != null) {
-    console.log(err)
+  if (err) {
+    process.stderr.write(err.message + '\n');
     return process.exit(1);
   }
-  console.log('Published');
+  process.stderr.write('Published\n');
 });
