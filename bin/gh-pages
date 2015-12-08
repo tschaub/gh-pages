@@ -14,6 +14,8 @@ program
       'URL of the repository you\'ll be pushing to')
   .option('-b, --branch <branch>',
       'name of the branch you\'ll be pushing to', 'gh-pages')
+  .option('-m, --message <message>',
+      'commit message', 'Updates')
   .option('-t, --dotfiles', 'Include dotfiles')
   .option('-a, --add', 'Only add, and never remove existing files.')
   .parse(process.argv);
@@ -22,6 +24,7 @@ ghpages.publish(path.join(process.cwd(), program.dist), {
   repo: program.repo,
   branch: program.branch,
   src: program.src,
+  message: program.message,
   dotfiles: !!program.dotfiles,
   add: !!program.add,
   logger: function(message) {
