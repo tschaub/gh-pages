@@ -1,3 +1,11 @@
+## v0.8.0
+
+* [#38](https://github.com/tschaub/gh-pages/pull/38) - Update all dependencies 🌴 ([@tschaub](https://github.com/tschaub))
+* [#39](https://github.com/tschaub/gh-pages/pull/39) - Add message option to cli. ([@markdalgleish](https://github.com/markdalgleish))
+* [#37](https://github.com/tschaub/gh-pages/pull/37) - Rework callback error handling. ([@tschaub](https://github.com/tschaub))
+* [#36](https://github.com/tschaub/gh-pages/pull/36) - Better error handling. ([@timaschew](https://github.com/timaschew))
+* [#35](https://github.com/tschaub/gh-pages/pull/35) - Make CLI exit with error if publishing fails. ([@timaschew](https://github.com/timaschew))
+
 ## v0.7.0
 
 * [#32](https://github.com/tschaub/gh-pages/pull/32) - Remove dependency on Lodash. ([@tschaub](https://github.com/tschaub))
