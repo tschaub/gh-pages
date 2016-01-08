@@ -26,7 +26,7 @@
     "test": "mocha --recursive test"
   },
   "dependencies": {
-    "async": "1.5.1",
+    "async": "1.5.2",
     "commander": "2.9.0",
     "glob": "~6.0.1",
     "graceful-fs": "4.1.2",
