@@ -1,6 +1,6 @@
 ## v0.9.0
 
- * [#46](https://github.com/tschaub/gh-pages/pull/46) - cli: add `--commit-only` flag to allow testing ([@amtrack](https://github.com/amtrack))
+ * [#46](https://github.com/tschaub/gh-pages/pull/46) - cli: add `--no-push` flag to allow testing ([@amtrack](https://github.com/amtrack))
  * [#43](https://github.com/tschaub/gh-pages/pull/43) - Update async to version 1.5.2 🚀 ([@tschaub](https://github.com/tschaub))
  * [#41](https://github.com/tschaub/gh-pages/pull/41) - Update async to version 1.5.1 🚀 ([@tschaub](https://github.com/tschaub))
 
