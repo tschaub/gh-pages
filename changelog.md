@@ -1,14 +1,20 @@
+## v0.9.0
+
+ * [#46](https://github.com/tschaub/gh-pages/pull/46) - cli: add `--commit-only` flag to allow testing ([@amtrack](https://github.com/amtrack))
+ * [#43](https://github.com/tschaub/gh-pages/pull/43) - Update async to version 1.5.2 🚀 ([@tschaub](https://github.com/tschaub))
+ * [#41](https://github.com/tschaub/gh-pages/pull/41) - Update async to version 1.5.1 🚀 ([@tschaub](https://github.com/tschaub))
+
 ## v0.8.0
 
-* [#38](https://github.com/tschaub/gh-pages/pull/38) - Update all dependencies 🌴 ([@tschaub](https://github.com/tschaub))
-* [#39](https://github.com/tschaub/gh-pages/pull/39) - Add message option to cli. ([@markdalgleish](https://github.com/markdalgleish))
-* [#37](https://github.com/tschaub/gh-pages/pull/37) - Rework callback error handling. ([@tschaub](https://github.com/tschaub))
-* [#36](https://github.com/tschaub/gh-pages/pull/36) - Better error handling. ([@timaschew](https://github.com/timaschew))
-* [#35](https://github.com/tschaub/gh-pages/pull/35) - Make CLI exit with error if publishing fails. ([@timaschew](https://github.com/timaschew))
+ * [#38](https://github.com/tschaub/gh-pages/pull/38) - Update all dependencies 🌴 ([@tschaub](https://github.com/tschaub))
+ * [#39](https://github.com/tschaub/gh-pages/pull/39) - Add message option to cli. ([@markdalgleish](https://github.com/markdalgleish))
+ * [#37](https://github.com/tschaub/gh-pages/pull/37) - Rework callback error handling. ([@tschaub](https://github.com/tschaub))
+ * [#36](https://github.com/tschaub/gh-pages/pull/36) - Better error handling. ([@timaschew](https://github.com/timaschew))
+ * [#35](https://github.com/tschaub/gh-pages/pull/35) - Make CLI exit with error if publishing fails. ([@timaschew](https://github.com/timaschew))
 
 ## v0.7.0
 
-* [#32](https://github.com/tschaub/gh-pages/pull/32) - Remove dependency on Lodash. ([@tschaub](https://github.com/tschaub))
+ * [#32](https://github.com/tschaub/gh-pages/pull/32) - Remove dependency on Lodash. ([@tschaub](https://github.com/tschaub))
 
 ## v0.6.0
 
@@ -17,7 +23,7 @@
 
 ## v0.5.0
 
-  * [#26](https://github.com/tschaub/gh-pages/pull/26) - Added support for the --add option to cli. ([@n1k0](https://github.com/n1k0))
+ * [#26](https://github.com/tschaub/gh-pages/pull/26) - Added support for the --add option to cli. ([@n1k0](https://github.com/n1k0))
 
 ## v0.4.0
 
@@ -38,4 +44,4 @@
 
 ## v0.1.0
 
-  * Setup.
+ * Setup.
