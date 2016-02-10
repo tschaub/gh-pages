@@ -12,6 +12,7 @@ program
       'pattern used to select which files should be published', '**/*')
   .option('-r, --repo <repo>',
       'URL of the repository you\'ll be pushing to')
+  .option('-x, --silent', 'Do not output the repository url')
   .option('-b, --branch <branch>',
       'name of the branch you\'ll be pushing to', 'gh-pages')
   .option('-m, --message <message>',
@@ -23,6 +24,7 @@ program
 
 ghpages.publish(path.join(process.cwd(), program.dist), {
   repo: program.repo,
+  silent: !!program.silent,
   branch: program.branch,
   src: program.src,
   message: program.message,
