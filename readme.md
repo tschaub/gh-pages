@@ -35,7 +35,7 @@ If a `gh-pages` branch already exists, it will be updated with all commits from 
 **Note** that any files in the `gh-pages` branch that are *not* in the `src` files **will be removed**.  See the [`add` option](#optionsadd) if you don't want any of the existing files removed.
 
 
-### <a id="optionsbase">`basePath`</a>
+### <a id="basepath">`basePath`</a>
 * type: `string`
 
 The base directory for all source files (those listed in the `src` config property).
@@ -68,10 +68,10 @@ The default options work for simple cases cases.  The options described below le
 
 
 #### <a id="optionssrc">options.src</a>
- * type: `string`
+ * type: `string|Array<string>`
  * default: `'**/*'`
 
-The [minimatch](https://github.com/isaacs/minimatch) pattern used to select which files should be published.
+The [minimatch](https://github.com/isaacs/minimatch) pattern or array of patterns used to select which files should be published.
 
 
 #### <a id="optionsdotfiles">options.dotfiles</a>
