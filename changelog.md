@@ -1,3 +1,12 @@
+## v0.11.0
+
+  * [#61](https://github.com/tschaub/gh-pages/pull/61) - Support a custom remote. ([@marco-c](https://github.com/marco-c))
+  * [#60](https://github.com/tschaub/gh-pages/pull/60) - Update eslint-config-tschaub to version 4.0.0 🚀 ([@tschaub](https://github.com/tschaub))
+  * [#57](https://github.com/tschaub/gh-pages/pull/57) - Update eslint to version 2.2.0 🚀 ([@tschaub](https://github.com/tschaub))
+  * [#59](https://github.com/tschaub/gh-pages/pull/59) - Allow an array of src patterns to be provided. ([@tschaub](https://github.com/tschaub))
+  * [#54](https://github.com/tschaub/gh-pages/pull/54) - Ugrade ESLint and config. ([@tschaub](https://github.com/tschaub))
+
+
 ## v0.10.0
 
  * [#50](https://github.com/tschaub/gh-pages/pull/50) - Update glob to version 7.0.0 🚀 ([@tschaub](https://github.com/tschaub))
