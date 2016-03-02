@@ -149,6 +149,24 @@ ghpages.publish(path.join(__dirname, 'build'), {
 ```
 
 
+#### <a id="optionsremote">options.remote</a>
+ * type: `string`
+ * default: `'origin'`
+
+The name of the remote you'll be pushing to.  The default is your `'origin'` remote, but this can be configured to push to any remote.
+
+Example use of the `remote` option:
+
+```js
+/**
+ * This task pushes to the `gh-pages` branch of of your `upstream` remote.
+ */
+ghpages.publish(path.join(__dirname, 'build'), {
+  remote: 'upstream'
+}, callback);
+```
+
+
 #### <a id="optionstag">options.tag</a>
  * type: `string`
  * default: `''`

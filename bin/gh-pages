@@ -15,6 +15,8 @@ program
   .option('-x, --silent', 'Do not output the repository url')
   .option('-b, --branch <branch>',
       'name of the branch you\'ll be pushing to', 'gh-pages')
+  .option('-o, --remote <name>',
+      'The name of the remote', 'origin')
   .option('-m, --message <message>',
       'commit message', 'Updates')
   .option('-t, --dotfiles', 'Include dotfiles')
@@ -30,6 +32,7 @@ ghpages.publish(path.join(process.cwd(), program.dist), {
   message: program.message,
   dotfiles: !!program.dotfiles,
   add: !!program.add,
+  remote: program.remote,
   push: !program.noPush,
   logger: function(message) {
     process.stderr.write(message + '\n');
