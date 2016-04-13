@@ -21,6 +21,9 @@ program
       'commit message', 'Updates')
   .option('-t, --dotfiles', 'Include dotfiles')
   .option('-a, --add', 'Only add, and never remove existing files.')
+  .option('-l, --only <pattern>',
+      'Only remove files that match the given pattern ' +
+      '(ignored if used together with --add).', '.')
   .option('-n, --no-push', 'Commit only (with no push)')
   .parse(process.argv);
 
@@ -32,6 +35,7 @@ ghpages.publish(path.join(process.cwd(), program.dist), {
   message: program.message,
   dotfiles: !!program.dotfiles,
   add: !!program.add,
+  only: program.only,
   remote: program.remote,
   push: !program.noPush,
   logger: function(message) {
