@@ -32,7 +32,7 @@
     "graceful-fs": "4.1.2",
     "q": "1.4.1",
     "q-io": "1.13.2",
-    "wrench": "1.5.8"
+    "wrench": "1.5.9"
   },
   "devDependencies": {
     "chai": "^3.4.1",
