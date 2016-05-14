@@ -32,11 +32,11 @@
     "graceful-fs": "4.1.2",
     "q": "1.4.1",
     "q-io": "1.13.2",
-    "wrench": "1.5.8"
+    "rimraf": "^2.5.2"
   },
   "devDependencies": {
     "chai": "^3.4.1",
-    "eslint": "2.7.0",
+    "eslint": "2.8.0",
     "eslint-config-tschaub": "4.0.0",
     "mocha": "^2.3.4",
     "sinon": "^1.17.3"
