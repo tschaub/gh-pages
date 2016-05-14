@@ -37,7 +37,7 @@ ghpages.publish(path.join(process.cwd(), program.dist), {
   add: !!program.add,
   only: program.remove,
   remote: program.remote,
-  push: !program.noPush,
+  push: !!program.push,
   logger: function(message) {
     process.stderr.write(message + '\n');
   }
