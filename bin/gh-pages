@@ -19,6 +19,8 @@ program
       'The name of the remote', 'origin')
   .option('-m, --message <message>',
       'commit message', 'Updates')
+  .option('-g, --tag <tag>',
+      'add tag to commit')
   .option('-t, --dotfiles', 'Include dotfiles')
   .option('-a, --add', 'Only add, and never remove existing files.')
   .option('-v, --remove <pattern>',
@@ -33,6 +35,7 @@ ghpages.publish(path.join(process.cwd(), program.dist), {
   branch: program.branch,
   src: program.src,
   message: program.message,
+  tag: program.tag,
   dotfiles: !!program.dotfiles,
   add: !!program.add,
   only: program.remove,
