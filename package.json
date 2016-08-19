@@ -29,7 +29,7 @@
     "async": "1.5.2",
     "commander": "2.9.0",
     "globby": "^5.0.0",
-    "graceful-fs": "4.1.5",
+    "graceful-fs": "4.1.6",
     "q": "1.4.1",
     "q-io": "1.13.2",
     "rimraf": "^2.5.2"
