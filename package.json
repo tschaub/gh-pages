@@ -1,0 +1,38 @@
+{
+  "name": "@morlay/gh-pages",
+  "version": "0.0.0",
+  "main": "lib/index.js",
+  "bin": {
+    "gh-pages": "lib/bin/gh-pages"
+  },
+  "config": {
+    "MOCHA_OPTS": "-R dot --timeout 20000 -r jsdom-global/register --compilers .:babel-core/register {modules,src}/{,**/}**/__tests__/*.spec.js"
+  },
+  "scripts": {
+    "lint": "eslint ./ --fix",
+    "deploy": "babel-node ./src/bin/gh-pages --src examples",
+    "test": "npm run lint && npm run deploy",
+    "build": "build src/ --out-dir lib/"
+  },
+  "devDependencies": {
+    "@morlay/babel-preset": "1.0.x",
+    "@morlay/eslint-config": "1.0.x",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.11.5"
+  },
+  "dependencies": {
+    "glob": "7.0.5",
+    "nodegit": "0.14.1",
+    "rimraf": "2.5.4",
+    "yargs": "5.0.x"
+  },
+  "author": "Morlay Null <morlay.null@gmail.com>",
+  "license": "WTFPL",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morlay/gh-pages.git"
+  },
+  "bugs": {
+    "url": "https://github.com/morlay/gh-pages/issues"
+  },
+  "homepage": "https://github.com/morlay/gh-pages#readme"
+}
