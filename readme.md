@@ -64,7 +64,7 @@ ghpages.publish(path.join(__dirname, 'build'), callback);
 
 ### Options
 
-The default options work for simple cases cases.  The options described below let you push to alternate branches, customize your commit messages, and more.
+The default options work for simple cases.  The options described below let you push to alternate branches, customize your commit messages, and more.
 
 
 #### <a id="optionssrc">options.src</a>
