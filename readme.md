@@ -1,5 +1,7 @@
 # gh-pages
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/tschaub/gh-pages.svg)](https://greenkeeper.io/)
+
 Publish files to a `gh-pages` branch on GitHub (or any other branch anywhere else).
 
 ## Getting Started
