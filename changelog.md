@@ -1,3 +1,23 @@
+## v0.12.0
+
+ * [#146](https://github.com/tschaub/gh-pages/pull/146) - Updates dependencies ([@tschaub](https://github.com/tschaub))
+ * [#138](https://github.com/tschaub/gh-pages/pull/138) - Updated readme.md with svg image ([@sobolevn](https://github.com/sobolevn))
+ * [#142](https://github.com/tschaub/gh-pages/pull/142) - Update globby to version 6.1.0 🚀 ([@tschaub](https://github.com/tschaub))
+ * [#134](https://github.com/tschaub/gh-pages/pull/134) - Update eslint to version 3.8.0 🚀 ([@tschaub](https://github.com/tschaub))
+ * [#135](https://github.com/tschaub/gh-pages/pull/135) - Update async to version 2.1.2 🚀 ([@tschaub](https://github.com/tschaub))
+ * [#130](https://github.com/tschaub/gh-pages/pull/130) - Update mocha to version 3.1.1 🚀 ([@tschaub](https://github.com/tschaub))
+ * [#112](https://github.com/tschaub/gh-pages/pull/112) - Update graceful-fs to version 4.1.6 🚀 ([@tschaub](https://github.com/tschaub))
+ * [#106](https://github.com/tschaub/gh-pages/pull/106) - Add a --tag option to the cli ([@donavon](https://github.com/donavon))
+ * [#102](https://github.com/tschaub/gh-pages/pull/102) - Update graceful-fs to version 4.1.5 🚀 ([@tschaub](https://github.com/tschaub))
+ * [#89](https://github.com/tschaub/gh-pages/pull/89) - Update globby to version 5.0.0 🚀 ([@tschaub](https://github.com/tschaub))
+ * [#87](https://github.com/tschaub/gh-pages/pull/87) - Update eslint-config-tschaub to version 5.0.0 🚀 ([@tschaub](https://github.com/tschaub))
+ * [#78](https://github.com/tschaub/gh-pages/pull/78) - Use rimraf for cleaning ([@tschaub](https://github.com/tschaub))
+ * [#75](https://github.com/tschaub/gh-pages/pull/75) - Expose a "remove" option to the CLI ([@tschaub](https://github.com/tschaub))
+ * [#76](https://github.com/tschaub/gh-pages/pull/76) - Update eslint to version 2.8.0 🚀 ([@tschaub](https://github.com/tschaub))
+ * [#70](https://github.com/tschaub/gh-pages/pull/70) - Update eslint to version 2.7.0 🚀 ([@tschaub](https://github.com/tschaub))
+ * [#63](https://github.com/tschaub/gh-pages/pull/63) - Update eslint to version 2.4.0 🚀 ([@tschaub](https://github.com/tschaub))
+ * [#62](https://github.com/tschaub/gh-pages/pull/62) - Update eslint to version 2.3.0 🚀 ([@tschaub](https://github.com/tschaub))
+
 ## v0.11.0
 
   * [#61](https://github.com/tschaub/gh-pages/pull/61) - Support a custom remote. ([@marco-c](https://github.com/marco-c))
