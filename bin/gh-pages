@@ -27,6 +27,8 @@ program
       'Remove files that match the given pattern ' +
       '(ignored if used together with --add).', '.')
   .option('-n, --no-push', 'Commit only (with no push)')
+  .option('-e, --dest <dest>', 'The destination in the target branch', '.')
+  .option('-c, --branchname-as-dest', 'Use a subfolder named after the current as the destination')
   .parse(process.argv);
 
 ghpages.publish(path.join(process.cwd(), program.dist), {
@@ -41,6 +43,8 @@ ghpages.publish(path.join(process.cwd(), program.dist), {
   only: program.remove,
   remote: program.remote,
   push: !program.noPush,
+  dest: program.dest,
+  branchnameAsDest: program.branchnameAsDest,
   logger: function(message) {
     process.stderr.write(message + '\n');
   }
