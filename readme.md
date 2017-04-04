@@ -317,6 +317,19 @@ ghpages.publish(path.join(__dirname, 'build'), {
 }, callback);
 ```
 
+#### <a id="optionsdest">options.branchnameAsDest</a>
+ * type: `boolean`
+ * default: `false`
+
+Use the current branch name as the path to the destination folder within the destination branch/repository. This option overrides the `dest` option.
+
+Example use of the `dest` option:
+
+```js
+ghpages.publish(path.join(__dirname, 'build'), { branchnameAsDest: true }, callback);
+```
+
+
 ## Command Line Utility
 
 Installing the package creates a `gh-pages` command line utility.  Run `gh-pages --help` to see a list of supported options.
