@@ -70,6 +70,29 @@ describe('util', function() {
       assert.deepEqual(got, expected);
     });
 
+    it('gets a list of unique directories on absolute paths', function() {
+      var absoluteFiles = files.map(function(path) { 
+        return '/' + path;
+      });
+      // not comparing order here, so we sort both
+      var got = util.uniqueDirs(absoluteFiles).sort();
+
+      var expected = [
+        '/',
+        '/a1',
+        '/a2',
+        path.join('/a1', 'b1'),
+        path.join('/a1', 'b1', 'c1'),
+        path.join('/a1', 'b1', 'c2'),
+        path.join('/a1', 'b2'),
+        path.join('/a1', 'b2', 'c1'),
+        path.join('/a1', 'b2', 'c2'),
+        path.join('/a2', 'b1')
+      ].sort();
+
+      assert.deepEqual(got, expected);
+    });
+
   });
 
   describe('dirsToCreate', function() {
