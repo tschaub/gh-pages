@@ -6,7 +6,6 @@ var assert = require('../helper').assert;
 var util = require('../../lib/util');
 
 describe('util', function() {
-
   var files;
   beforeEach(function() {
     files = [
@@ -49,7 +48,6 @@ describe('util', function() {
   });
 
   describe('uniqueDirs', function() {
-
     it('gets a list of unique directory paths', function() {
       // not comparing order here, so we sort both
       var got = util.uniqueDirs(files).sort();
@@ -69,11 +67,9 @@ describe('util', function() {
 
       assert.deepEqual(got, expected);
     });
-
   });
 
   describe('dirsToCreate', function() {
-
     it('gets a sorted list of directories to create', function() {
       var got = util.dirsToCreate(files);
 
@@ -92,7 +88,5 @@ describe('util', function() {
 
       assert.deepEqual(got, expected);
     });
-
   });
-
 });
