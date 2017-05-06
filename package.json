@@ -22,6 +22,7 @@
   },
   "main": "lib/index.js",
   "scripts": {
+    "fix-lint": "eslint --fix lib test bin/gh-pages",
     "pretest": "eslint lib test bin/gh-pages",
     "test": "mocha --recursive test"
   },
@@ -37,7 +38,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint": "^3.10.2",
-    "eslint-config-tschaub": "^6.0.0",
+    "eslint-config-tschaub": "^7.0.0",
     "mocha": "^3.1.2"
   },
   "bin": {
