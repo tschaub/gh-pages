@@ -26,6 +26,9 @@
     "pretest": "eslint lib test bin/gh-pages",
     "test": "mocha --recursive test"
   },
+  "engines": {
+    "node": ">=4"
+  },
   "dependencies": {
     "async": "2.1.4",
     "commander": "2.9.0",
