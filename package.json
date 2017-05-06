@@ -29,10 +29,9 @@
   "dependencies": {
     "async": "2.1.4",
     "commander": "2.9.0",
+    "fs-extra": "^3.0.1",
     "globby": "^6.1.0",
     "graceful-fs": "4.1.11",
-    "q": "1.4.1",
-    "q-io": "1.13.2",
     "rimraf": "^2.5.4"
   },
   "devDependencies": {
