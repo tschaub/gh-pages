@@ -22,6 +22,7 @@ program
   .option('-o, --remote <name>', 'The name of the remote', 'origin')
   .option('-m, --message <message>', 'commit message', 'Updates')
   .option('-g, --tag <tag>', 'add tag to commit')
+  .option('-p, --depth <depth>', 'depth for clone', 1)
   .option('-t, --dotfiles', 'Include dotfiles')
   .option('-a, --add', 'Only add, and never remove existing files.')
   .option(
