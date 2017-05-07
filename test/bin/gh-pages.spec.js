@@ -1,13 +1,10 @@
-/* eslint-env mocha */
-
 var ghpages = require('../../lib/index');
-var stub = require('../helper').stub;
-var assert = require('../helper').sinon.assert;
+var sinon = require('sinon');
 var cli = require('../../bin/gh-pages');
 
 describe('gh-pages', function() {
   beforeEach(function() {
-    stub(ghpages, 'publish');
+    sinon.stub(ghpages, 'publish');
   });
 
   afterEach(function() {
@@ -41,7 +38,7 @@ describe('gh-pages', function() {
 
     it(args.join(' '), function() {
       cli(['node', 'gh-pages'].concat(args));
-      assert.calledWithMatch(ghpages.publish, dist, config);
+      sinon.assert.calledWithMatch(ghpages.publish, dist, config);
     });
   });
 });
