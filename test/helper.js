@@ -79,7 +79,7 @@ function setupRemote(fixtureName, options) {
     });
 }
 
-function assertContentsMatch(dir, url, branch, matchOptions) {
+function assertContentsMatch(dir, url, branch) {
   return mkdtemp()
     .then(function(root) {
       var clone = path.join(root, 'repo');
@@ -87,8 +87,7 @@ function assertContentsMatch(dir, url, branch, matchOptions) {
       return Git.clone(url, clone, branch, options);
     })
     .then(function(git) {
-      var options = Object.assign({}, matchOptions, {excludeFilter: '.git'});
-      var comparison = compare(dir, git.cwd, options);
+      var comparison = compare(dir, git.cwd, {excludeFilter: '.git'});
       if (comparison.same) {
         return true;
       } else {
@@ -100,8 +99,8 @@ function assertContentsMatch(dir, url, branch, matchOptions) {
               right: '<-',
               distinct: '<>'
             }[entry.state];
-            var name1 = entry.name1 ? entry.name1 : '';
-            var name2 = entry.name2 ? entry.name2 : '';
+            var name1 = entry.name1 ? entry.name1 : '<none>';
+            var name2 = entry.name2 ? entry.name2 : '<none>';
 
             return [name1, state, name2].join(' ');
           })

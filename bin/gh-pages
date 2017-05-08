@@ -14,6 +14,11 @@ function main(args) {
       'pattern used to select which files should be published',
       '**/*'
     )
+    .option(
+      '-e, --dest <dest>',
+      'Target directory within the destination branch (relative to the root)',
+      '.'
+    )
     .option('-r, --repo <repo>', "URL of the repository you'll be pushing to")
     .option('-x, --silent', 'Do not output the repository url')
     .option(
@@ -43,6 +48,7 @@ function main(args) {
       silent: !!program.silent,
       branch: program.branch,
       src: program.src,
+      dest: program.dest,
       message: program.message,
       tag: program.tag,
       dotfiles: !!program.dotfiles,

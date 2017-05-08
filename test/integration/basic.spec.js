@@ -12,6 +12,7 @@ beforeEach(function() {
 describe('basic usage', function() {
   it('pushes the contents of a directory to a gh-pages branch', function(done) {
     var local = path.join(fixtures, fixtureName, 'local');
+    var expected = path.join(fixtures, fixtureName, 'expected');
     var branch = 'gh-pages';
 
     helper.setupRemote(fixtureName, branch).then(function(url) {
@@ -27,7 +28,7 @@ describe('basic usage', function() {
           return done(err);
         }
         helper
-          .assertContentsMatch(local, url, branch)
+          .assertContentsMatch(expected, url, branch)
           .then(function() {
             done();
           })

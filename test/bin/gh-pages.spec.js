@@ -16,6 +16,7 @@ describe('gh-pages', function() {
     silent: false,
     branch: 'gh-pages',
     src: '**/*',
+    dest: '.',
     message: 'Updates',
     dotfiles: false,
     add: false,
@@ -28,6 +29,7 @@ describe('gh-pages', function() {
     ['--dist lib -n', 'lib', {push: false}],
     ['--dist lib -x', 'lib', {silent: true}],
     ['--dist lib --dotfiles', 'lib', {dotfiles: true}],
+    ['--dist lib --dest target', 'lib', {dest: 'target'}],
     ['--dist lib -a', 'lib', {add: true}]
   ];
 
