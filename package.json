@@ -22,8 +22,8 @@
   },
   "main": "lib/index.js",
   "scripts": {
-    "fix-lint": "eslint --fix lib test bin/gh-pages",
-    "pretest": "eslint lib test bin/gh-pages",
+    "fix-lint": "eslint --fix lib test bin",
+    "pretest": "eslint lib test bin",
     "test": "mocha --recursive test"
   },
   "engines": {
@@ -48,7 +48,8 @@
     "tmp": "0.0.31"
   },
   "bin": {
-    "gh-pages": "bin/gh-pages"
+    "gh-pages": "bin/gh-pages",
+    "gh-pages-clean": "bin/gh-pages-clean"
   },
   "eslintConfig": {
     "extends": "tschaub"
