@@ -55,10 +55,7 @@ function main(args) {
       add: !!program.add,
       only: program.remove,
       remote: program.remote,
-      push: !!program.push,
-      logger: function(message) {
-        process.stderr.write(message + '\n');
-      }
+      push: !!program.push
     },
     function(err) {
       if (err) {

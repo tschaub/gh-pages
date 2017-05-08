@@ -264,26 +264,6 @@ ghpages.publish(path.join(__dirname, 'build'), {
 ```
 
 
-#### <a id="optionslogger">options.logger</a>
- * type: `function(string)`
- * default: `function(){}`
-
-Logger function.  The default logging function is a no-op, allowing you to provide a custom logging implementation.
-
-Example use of the `logger` option:
-
-```js
-/**
- * This configuration will log to the console
- */
-ghpages.publish(path.join(__dirname, 'build'), {
-  logger: function(message) {
-    console.log(message);
-  }
-}, callback);
-```
-
-
 #### <a id="optionsgit">options.git</a>
  * type: `string`
  * default: `'git'`
@@ -335,6 +315,14 @@ And then to publish everything from your `dist` folder to your `gh-pages` branch
 
 ```shell
 npm run deploy
+```
+
+## Debugging
+
+To get additional output from the `gh-pages` script, set `NODE_DEBUG=gh-pages`.  For example:
+
+```shell
+NODE_DEBUG=gh-pages npm run deploy
 ```
 
 ## Dependencies
