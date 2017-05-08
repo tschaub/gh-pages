@@ -3,22 +3,23 @@ var ghPages = require('../../lib/');
 var path = require('path');
 
 var fixtures = path.join(__dirname, 'fixtures');
-var fixtureName = 'include';
+var fixtureName = 'dest';
 
 beforeEach(function() {
   ghPages.clean();
 });
 
-describe('the src option', function() {
-  it('can be used to limit which files are included', function(done) {
+describe('the dest option', function() {
+  it('allows publishing to a subdirectory within a branch', function(done) {
     var local = path.join(fixtures, fixtureName, 'local');
     var expected = path.join(fixtures, fixtureName, 'expected');
     var branch = 'gh-pages';
+    var dest = 'target';
 
     helper.setupRemote(fixtureName, branch).then(function(url) {
       var options = {
         repo: url,
-        src: '**/*.js',
+        dest: dest,
         user: {
           name: 'User Name',
           email: 'user@email.com'
