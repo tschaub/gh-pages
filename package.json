@@ -21,9 +21,12 @@
     "url": "https://github.com/tschaub/gh-pages/issues"
   },
   "main": "lib/index.js",
+  "config": {
+    "js": "lib test bin plugin.js"
+  },
   "scripts": {
-    "fix-lint": "eslint --fix lib test bin",
-    "pretest": "eslint lib test bin",
+    "fix-lint": "eslint --fix $npm_package_config_js",
+    "pretest": "eslint $npm_package_config_js",
     "test": "mocha --recursive test"
   },
   "engines": {
