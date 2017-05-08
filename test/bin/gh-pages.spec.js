@@ -1,24 +1,15 @@
-/* eslint-env mocha */
-
 var ghpages = require('../../lib/index');
-var stub = require('../helper').stub;
-var assert = require('../helper').sinon.assert;
-var cli = '../../bin/gh-pages';
+var sinon = require('sinon');
+var cli = require('../../bin/gh-pages');
 
 describe('gh-pages', function() {
   beforeEach(function() {
-    stub(ghpages, 'publish');
+    sinon.stub(ghpages, 'publish');
   });
 
   afterEach(function() {
     ghpages.publish.restore();
   });
-
-  var publish = function publish(args) {
-    process.argv = ['node', 'gh-pages'].concat(args);
-    require(cli);
-    delete require.cache[require.resolve(cli)];
-  };
 
   var defaults = {
     repo: undefined,
@@ -46,8 +37,8 @@ describe('gh-pages', function() {
     var config = scenario[2];
 
     it(args.join(' '), function() {
-      publish(args);
-      assert.calledWithMatch(ghpages.publish, dist, config);
+      cli(['node', 'gh-pages'].concat(args));
+      sinon.assert.calledWithMatch(ghpages.publish, dist, config);
     });
   });
 });

@@ -1,5 +1,15 @@
 var chai = require('chai');
-var sinon = require('sinon');
+var tmp = require('tmp');
+var path = require('path');
+var fs = require('fs-extra');
+var Git = require('../lib/git');
+var compare = require('dir-compare').compareSync;
+
+/**
+ * Turn off maxListeners warning during the tests
+ * See: https://nodejs.org/docs/latest/api/events.html#events_emitter_setmaxlisteners_n
+ */
+require('events').EventEmitter.prototype._maxListeners = 0;
 
 /** @type {boolean} */
 chai.config.includeStack = true;
@@ -10,32 +20,96 @@ chai.config.includeStack = true;
  */
 exports.assert = chai.assert;
 
-/**
- * Sinon's spy function
- * @type {function}
- */
-exports.spy = sinon.spy;
+var fixtures = path.join(__dirname, 'integration', 'fixtures');
 
-/**
- * Sinon's stub function
- * @type {function}
- */
-exports.stub = sinon.stub;
+function mkdtemp() {
+  return new Promise(function(resolve, reject) {
+    tmp.dir({unsafeCleanup: true}, function(err, tmpPath) {
+      if (err) {
+        return reject(err);
+      }
+      resolve(tmpPath);
+    });
+  });
+}
 
-/**
- * Sinon's mock function
- * @type {function}
- */
-exports.mock = sinon.mock;
+function relay(value) {
+  return function() {
+    return value;
+  };
+}
 
-/**
- * Sinon's API object
- * @type {object}
- */
-exports.sinon = sinon;
+function setupRemote(fixtureName, options) {
+  options = options || {};
+  var branch = options.branch || 'gh-pages';
+  var userEmail = (options.user && options.user.email) || 'user@email.com';
+  var userName = (options.name && options.user.name) || 'User Name';
+  return mkdtemp()
+    .then(function(remote) {
+      return new Git(remote).exec('init', '--bare').then(relay(remote));
+    })
+    .then(function(remote) {
+      return mkdtemp()
+        .then(function(clone) {
+          const fixturePath = path.join(fixtures, fixtureName, 'remote');
+          return fs.copy(fixturePath, clone).then(relay(new Git(clone)));
+        })
+        .then(function(git) {
+          return git.init();
+        })
+        .then(function(git) {
+          return git.exec('config', 'user.email', userEmail);
+        })
+        .then(function(git) {
+          return git.exec('config', 'user.name', userName);
+        })
+        .then(function(git) {
+          return git.exec('checkout', '--orphan', branch);
+        })
+        .then(function(git) {
+          return git.add('.');
+        })
+        .then(function(git) {
+          return git.commit('Initial commit');
+        })
+        .then(function(git) {
+          var url = 'file://' + remote;
+          return git.exec('push', url, branch).then(relay(url));
+        });
+    });
+}
 
-/**
- * Turn of maxListeners warning during the tests
- * See: https://nodejs.org/docs/latest/api/events.html#events_emitter_setmaxlisteners_n
- */
-require('events').EventEmitter.prototype._maxListeners = 0;
+function assertContentsMatch(dir, url, branch, matchOptions) {
+  return mkdtemp()
+    .then(function(root) {
+      var clone = path.join(root, 'repo');
+      var options = {git: 'git', remote: 'origin', depth: 1};
+      return Git.clone(url, clone, branch, options);
+    })
+    .then(function(git) {
+      var options = Object.assign({}, matchOptions, {excludeFilter: '.git'});
+      var comparison = compare(dir, git.cwd, options);
+      if (comparison.same) {
+        return true;
+      } else {
+        var message = comparison.diffSet
+          .map(function(entry) {
+            var state = {
+              equal: '==',
+              left: '->',
+              right: '<-',
+              distinct: '<>'
+            }[entry.state];
+            var name1 = entry.name1 ? entry.name1 : '';
+            var name2 = entry.name2 ? entry.name2 : '';
+
+            return [name1, state, name2].join(' ');
+          })
+          .join('\n');
+        throw new Error('Directories do not match:\n' + message);
+      }
+    });
+}
+
+exports.setupRemote = setupRemote;
+exports.assertContentsMatch = assertContentsMatch;
