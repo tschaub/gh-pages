@@ -1,7 +1,5 @@
 # gh-pages
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/tschaub/gh-pages.svg)](https://greenkeeper.io/)
-
 Publish files to a `gh-pages` branch on GitHub (or any other branch anywhere else).
 
 ## Getting Started
@@ -18,7 +16,7 @@ This module requires Git `>=1.9`.
 var ghpages = require('gh-pages');
 var path = require('path');
 
-ghpages.publish(path.join(__dirname, 'dist'), function(err) { ... });
+ghpages.publish('dist', function(err) {});
 ```
 
 
@@ -48,7 +46,7 @@ Example use of the `basePath`:
 /**
  * Given the following directory structure:
  *
- *   build/
+ *   dist/
  *     index.html
  *     js/
  *       site.js
@@ -60,7 +58,7 @@ Example use of the `basePath`:
  *     site.js
  *
  */
-ghpages.publish(path.join(__dirname, 'build'), callback);
+ghpages.publish('dist', callback);
 ```
 
 
@@ -76,6 +74,43 @@ The default options work for simple cases.  The options described below let you 
 The [minimatch](https://github.com/isaacs/minimatch) pattern or array of patterns used to select which files should be published.
 
 
+#### <a id="optionsbranch">options.branch</a>
+ * type: `string`
+ * default: `'gh-pages'`
+
+The name of the branch you'll be pushing to.  The default uses GitHub's `gh-pages` branch, but this can be configured to push to any branch on any remote.
+
+Example use of the `branch` option:
+
+```js
+/**
+ * This task pushes to the `master` branch of the configured `repo`.
+ */
+ghpages.publish('dist', {
+  branch: 'master',
+  repo: 'https://example.com/other/repo.git'
+}, callback);
+```
+
+
+#### <a id="optionsdest">options.dest</a>
+ * type: `string`
+ * default: `'.'`
+
+The destination folder within the destination branch.  By default, all files are published to the root of the repository.
+
+Example use of the `dest` option:
+
+```js
+/**
+ * Place content in the static/project subdirectory of the target
+ * branch.
+ */
+ghpages.publish('dist', {
+  dest: 'static/project'
+}, callback);
+```
+
 #### <a id="optionsdotfiles">options.dotfiles</a>
  * type: `boolean`
  * default: `false`
@@ -89,7 +124,7 @@ Example use of the `dotfiles` option:
  * The usage below will push dotfiles (directories and files)
  * that otherwise match the `src` pattern.
  */
-ghpages.publish(path.join(__dirname, 'dist'), { dotfiles: true }, callback);
+ghpages.publish('dist', {dotfiles: true}, callback);
 ```
 
 
@@ -106,7 +141,7 @@ Example use of the `add` option:
  * The usage below will only add files to the `gh-pages` branch, never removing
  * any existing files (even if they don't exist in the `src` config).
  */
-ghpages.publish(path.join(__dirname, 'build'), { add: true }, callback);
+ghpages.publish('dist', {add: true}, callback);
 ```
 
 
@@ -126,26 +161,7 @@ Example use of the `repo` option:
  * with, set the URL for the repository in the `repo` option.  This usage will
  * push all files in the `src` config to the `gh-pages` branch of the `repo`.
  */
-ghpages.publish(path.join(__dirname, 'build'), {
-  repo: 'https://example.com/other/repo.git'
-}, callback);
-```
-
-
-#### <a id="optionsbranch">options.branch</a>
- * type: `string`
- * default: `'gh-pages'`
-
-The name of the branch you'll be pushing to.  The default uses GitHub's `gh-pages` branch, but this can be configured to push to any branch on any remote.
-
-Example use of the `branch` option:
-
-```js
-/**
- * This task pushes to the `master` branch of the configured `repo`.
- */
-ghpages.publish(path.join(__dirname, 'build'), {
-  branch: 'master',
+ghpages.publish('dist', {
   repo: 'https://example.com/other/repo.git'
 }, callback);
 ```
@@ -163,7 +179,7 @@ Example use of the `remote` option:
 /**
  * This task pushes to the `gh-pages` branch of of your `upstream` remote.
  */
-ghpages.publish(path.join(__dirname, 'build'), {
+ghpages.publish('dist', {
   remote: 'upstream'
 }, callback);
 ```
@@ -188,7 +204,7 @@ Example use of the `message` option:
 /**
  * This adds commits with a custom message.
  */
-ghpages.publish(path.join(__dirname, 'build'), {
+ghpages.publish('dist', {
   message: 'Auto-generated commit'
 }, callback);
 ```
@@ -203,7 +219,7 @@ If you are running the `gh-pages` task in a repository without a `user.name` or 
 Example use of the `user` option:
 
 ```js
-ghpages.publish(path.join(__dirname, 'build'), {
+ghpages.publish('dist', {
   user: {
     name: 'Joe Code',
     email: 'coder@example.com'
@@ -226,7 +242,7 @@ Example use of the `clone` option:
  * use the `clone` option as below.  To avoid re-cloning every time the task is
  * run, this should be a directory that sticks around for a while.
  */
-ghpages.publish(path.join(__dirname, 'build'), {
+ghpages.publish('dist', {
   clone: 'path/to/tmp/dir'
 }, callback);
 ```
@@ -241,7 +257,7 @@ Push branch to remote.  To commit only (with no push) set to `false`.
 Example use of the `push` option:
 
 ```js
-ghpages.publish(path.join(__dirname, 'build'), { push: false }, callback);
+ghpages.publish('dist', {push: false}, callback);
 ```
 
 
@@ -249,15 +265,15 @@ ghpages.publish(path.join(__dirname, 'build'), { push: false }, callback);
  * type: `boolean`
  * default: `false`
 
-Suppress logging.  This option should be used if the repository URL or other information passed to git commands is sensitive and should not be logged.  With silent `true` log messages are suppressed and error messages are sanitized.
+Avoid showing repository URLs or other information in errors.
 
 Example use of the `silent` option:
 
 ```js
 /**
- * This configuration will suppress logging and sanitize error messages.
+ * This configuration will avoid logging the GH_TOKEN if there is an error.
  */
-ghpages.publish(path.join(__dirname, 'build'), {
+ghpages.publish('dist', {
   repo: 'https://' + process.env.GH_TOKEN + '@github.com/user/private-repo.git',
   silent: true
 }, callback);
@@ -276,26 +292,8 @@ Example use of the `git` option:
 /**
  * If `git` is not on your path, provide the path as shown below.
  */
-ghpages.publish(path.join(__dirname, 'build'), {
+ghpages.publish('dist', {
   git: '/path/to/git'
-}, callback);
-```
-
-#### <a id="optionsdest">options.dest</a>
- * type: `string`
- * default: `'.'`
-
-The destination folder within the destination branch/repository.
-
-Example use of the `dest` option:
-
-```js
-/**
- * Place content in the static/project subdirectory of the target
- * branch/repository. If removing files, only remove static/project.
- */
-ghpages.publish(path.join(__dirname, 'build'), {
-  dest: 'static/project'
 }, callback);
 ```
 
