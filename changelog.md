@@ -1,3 +1,26 @@
+## v1.0.0
+
+This release includes a couple breaking changes:
+
+ * Node 4+ is required.
+ * The `logger` option has been removed.  Set `NODE_DEBUG=gh-pages` to see debug output.
+
+If you are using Node 4+ and not using the `logger` option, upgrades should be painless.  See below for a full list of changes:
+
+ * [#174](https://github.com/tschaub/gh-pages/pull/174) - Remove the logger option and use util.debuglog() ([@tschaub](https://github.com/tschaub))
+ * [#173](https://github.com/tschaub/gh-pages/pull/173) - Dedicated cache directory per repo ([@tschaub](https://github.com/tschaub))
+ * [#172](https://github.com/tschaub/gh-pages/pull/172) - Provision for root path when splitting ([@esarbanis](https://github.com/esarbanis))
+ * [#171](https://github.com/tschaub/gh-pages/pull/171) - Add a dest option ([@lelandmiller](https://github.com/lelandmiller))
+ * [#73](https://github.com/tschaub/gh-pages/pull/73) - feat(plugin): add plugin support for semantic-release ([@tusharmath](https://github.com/tusharmath))
+ * [#170](https://github.com/tschaub/gh-pages/pull/170) - Integration tests ([@tschaub](https://github.com/tschaub))
+ * [#21](https://github.com/tschaub/gh-pages/pull/21) - Document that git 1.9+ is required. ([@warmhug](https://github.com/warmhug))
+ * [#169](https://github.com/tschaub/gh-pages/pull/169) - Fix noPush command argument and include regression tests for the CLI ([@thiagofelix](https://github.com/thiagofelix))
+ * [#168](https://github.com/tschaub/gh-pages/pull/168) - Clone with depth 1 by default ([@tschaub](https://github.com/tschaub))
+ * [#167](https://github.com/tschaub/gh-pages/pull/167) - Require Node 4+ ([@tschaub](https://github.com/tschaub))
+ * [#166](https://github.com/tschaub/gh-pages/pull/166) - Updates ([@tschaub](https://github.com/tschaub))
+ * [#158](https://github.com/tschaub/gh-pages/pull/158) - Update dependencies to enable Greenkeeper 🌴 ([@tschaub](https://github.com/tschaub))
+ * [#150](https://github.com/tschaub/gh-pages/pull/150) - Fix small typo ([@mandeldl](https://github.com/mandeldl))
+
 ## v0.12.0
 
  * [#146](https://github.com/tschaub/gh-pages/pull/146) - Updates dependencies ([@tschaub](https://github.com/tschaub))
