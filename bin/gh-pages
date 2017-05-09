@@ -8,30 +8,30 @@ var pkg = require('../package.json');
 function main(args) {
   program
     .version(pkg.version)
-    .option('-d, --dist <dist>', 'base directory for all source files')
+    .option('-d, --dist <dist>', 'Base directory for all source files')
     .option(
       '-s, --src <src>',
-      'pattern used to select which files should be published',
+      'Pattern used to select which files to publish',
       '**/*'
+    )
+    .option(
+      '-b, --branch <branch>',
+      'Name of the branch you are pushing to',
+      'gh-pages'
     )
     .option(
       '-e, --dest <dest>',
       'Target directory within the destination branch (relative to the root)',
       '.'
     )
-    .option('-r, --repo <repo>', "URL of the repository you'll be pushing to")
+    .option('-a, --add', 'Only add, and never remove existing files')
     .option('-x, --silent', 'Do not output the repository url')
-    .option(
-      '-b, --branch <branch>',
-      "name of the branch you'll be pushing to",
-      'gh-pages'
-    )
-    .option('-o, --remote <name>', 'The name of the remote', 'origin')
     .option('-m, --message <message>', 'commit message', 'Updates')
     .option('-g, --tag <tag>', 'add tag to commit')
-    .option('-p, --depth <depth>', 'depth for clone', 1)
     .option('-t, --dotfiles', 'Include dotfiles')
-    .option('-a, --add', 'Only add, and never remove existing files.')
+    .option('-r, --repo <repo>', 'URL of the repository you are pushing to')
+    .option('-p, --depth <depth>', 'depth for clone', 1)
+    .option('-o, --remote <name>', 'The name of the remote', 'origin')
     .option(
       '-v, --remove <pattern>',
       'Remove files that match the given pattern ' +

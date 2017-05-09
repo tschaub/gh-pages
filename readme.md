@@ -23,9 +23,9 @@ ghpages.publish('dist', function(err) {});
 ## `publish`
 
 ```js
-ghpages.publish(basePath, callback);
+ghpages.publish(dir, callback);
 // or...
-ghpages.publish(basePath, options, callback);
+ghpages.publish(dir, options, callback);
 ```
 
 Calling this function will create a temporary clone of the current repository, create a `gh-pages` branch if one doesn't already exist, copy over all files from the base path, or only those that match patterns from the optional `src` configuration, commit all changes, and push to the `origin` remote.
@@ -35,12 +35,12 @@ If a `gh-pages` branch already exists, it will be updated with all commits from 
 **Note** that any files in the `gh-pages` branch that are *not* in the `src` files **will be removed**.  See the [`add` option](#optionsadd) if you don't want any of the existing files removed.
 
 
-### <a id="basepath">`basePath`</a>
+### <a id="dir">`dir`</a>
 * type: `string`
 
 The base directory for all source files (those listed in the `src` config property).
 
-Example use of the `basePath`:
+Example use:
 
 ```js
 /**
