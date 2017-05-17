@@ -14,7 +14,6 @@ This module requires Git `>=1.9`.
 
 ```js
 var ghpages = require('gh-pages');
-var path = require('path');
 
 ghpages.publish('dist', function(err) {});
 ```
