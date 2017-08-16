@@ -42,7 +42,7 @@
     "rimraf": "^2.5.4"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
+    "chai": "^4.1.1",
     "dir-compare": "^1.4.0",
     "eslint": "^4.1.1",
     "eslint-config-tschaub": "^7.0.0",
