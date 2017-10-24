@@ -45,7 +45,7 @@
     "chai": "^4.1.1",
     "dir-compare": "^1.4.0",
     "eslint": "^4.1.1",
-    "eslint-config-tschaub": "^7.0.0",
+    "eslint-config-tschaub": "^9.0.0",
     "mocha": "^3.1.2",
     "sinon": "^3.2.1",
     "tmp": "0.0.33"
