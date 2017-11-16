@@ -294,6 +294,23 @@ Example use of the `git` option:
 ghpages.publish('dist', {
   git: '/path/to/git'
 }, callback);
+```  
+
+#### <a id="optionscache">options.cache</a>
+ * type: `string`
+ * default: `path.resolve(__dirname, '../.cache')`
+
+When global installation, manually specifying cache locations can avoid most permissions errors.
+
+Example use of the `cache` option:
+
+```js
+/**
+ * If you need a new cache path.
+ */
+ghpages.publish('dist', {
+  cache: path.resolve(__dirname, './temp/cache')
+}, callback);
 ```
 
 ## Command Line Utility
