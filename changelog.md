@@ -1,3 +1,19 @@
+## v1.1.0
+
+ * [#218](https://github.com/tschaub/gh-pages/pull/218) - Update dependencies, test on Node 8 ([@tschaub](https://github.com/tschaub))
+ * [#211](https://github.com/tschaub/gh-pages/pull/211) - Update async to the latest version 🚀 ([@tschaub](https://github.com/tschaub))
+ * [#202](https://github.com/tschaub/gh-pages/pull/202) - chore(package): update sinon to version 3.2.1 ([@tschaub](https://github.com/tschaub))
+ * [#201](https://github.com/tschaub/gh-pages/pull/201) - chore(package): update chai to version 4.1.1 ([@tschaub](https://github.com/tschaub))
+ * [#196](https://github.com/tschaub/gh-pages/pull/196) - fix(package): update fs-extra to version 4.0.1 ([@tschaub](https://github.com/tschaub))
+ * [#199](https://github.com/tschaub/gh-pages/pull/199) - Update tmp to the latest version 🚀 ([@tschaub](https://github.com/tschaub))
+ * [#193](https://github.com/tschaub/gh-pages/pull/193) - Return the promise in the publish function ([@Ambyjkl](https://github.com/Ambyjkl))
+ * [#188](https://github.com/tschaub/gh-pages/pull/188) - chore(package): update sinon to version 2.3.3 ([@tschaub](https://github.com/tschaub))
+ * [#185](https://github.com/tschaub/gh-pages/pull/185) - fix(package): update commander to version 2.11.0 ([@tschaub](https://github.com/tschaub))
+ * [#186](https://github.com/tschaub/gh-pages/pull/186) - chore(package): update eslint to version 4.1.1 ([@tschaub](https://github.com/tschaub))
+ * [#187](https://github.com/tschaub/gh-pages/pull/187) - fix(package): update async to version 2.5.0 ([@tschaub](https://github.com/tschaub))
+ * [#175](https://github.com/tschaub/gh-pages/pull/175) - Removed unnecessary path require ([@antialias](https://github.com/antialias))
+
+
 ## v1.0.0
 
 This release includes a couple breaking changes:
