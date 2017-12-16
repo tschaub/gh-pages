@@ -62,7 +62,7 @@ function main(args) {
         process.stderr.write(err.message + '\n');
         return process.exit(1);
       }
-      process.stderr.write('Published\n');
+      process.stdout.write('Published\n');
     }
   );
 }
