@@ -42,7 +42,7 @@ function main(args) {
     .parse(args);
 
   ghpages.publish(
-    path.join(process.cwd(), program.dist),
+    path.resolve(program.dist),
     {
       repo: program.repo,
       silent: !!program.silent,
