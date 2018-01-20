@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const ghpages = require('../lib/index');
+const Git = require('../lib/git');
 const program = require('commander');
 const path = require('path');
 const pkg = require('../package.json');
@@ -39,32 +40,57 @@ function main(args) {
       '.'
     )
     .option('-n, --no-push', 'Commit only (with no push)')
+    .option('-l, --localuser', 'Use Git local user config (not global)')
+    .option('-u, --user <username,email>', 'Override default username, email')
     .parse(args);
 
-  ghpages.publish(
-    path.join(process.cwd(), program.dist),
-    {
-      repo: program.repo,
-      silent: !!program.silent,
-      branch: program.branch,
-      src: program.src,
-      dest: program.dest,
-      message: program.message,
-      tag: program.tag,
-      dotfiles: !!program.dotfiles,
-      add: !!program.add,
-      only: program.remove,
-      remote: program.remote,
-      push: !!program.push
-    },
-    function(err) {
-      if (err) {
-        process.stderr.write(err.message + '\n');
-        return process.exit(1);
+  if (program.localuser) {
+    Promise.all([
+      new Git().exec('config', '--local', 'user.name'),
+      new Git().exec('config', '--local', 'user.email')
+    ]).then(results => {
+      publish({
+        name: results[0].output.trim(),
+        email: results[1].output.trim()
+      });
+    });
+  } else if (program.user) {
+    const userParts = program.user.split(',');
+    publish({
+      user: userParts[0],
+      email: userParts[1]
+    });
+  } else {
+    publish();
+  }
+
+  function publish(user) {
+    ghpages.publish(
+      path.join(process.cwd(), program.dist),
+      {
+        repo: program.repo,
+        silent: !!program.silent,
+        branch: program.branch,
+        src: program.src,
+        dest: program.dest,
+        message: program.message,
+        tag: program.tag,
+        dotfiles: !!program.dotfiles,
+        add: !!program.add,
+        only: program.remove,
+        remote: program.remote,
+        push: !!program.push,
+        user: user
+      },
+      function(err) {
+        if (err) {
+          process.stderr.write(err.message + '\n');
+          return process.exit(1);
+        }
+        process.stderr.write('Published\n');
       }
-      process.stderr.write('Published\n');
-    }
-  );
+    );
+  }
 }
 
 if (require.main === module) {
