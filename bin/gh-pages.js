@@ -57,7 +57,7 @@ function main(args) {
   } else if (program.user) {
     const userParts = program.user.split(',');
     publish({
-      user: userParts[0],
+      name: userParts[0],
       email: userParts[1]
     });
   } else {
