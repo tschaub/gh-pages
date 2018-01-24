@@ -1,45 +1,45 @@
 #!/usr/bin/env node
 
-var ghpages = require('../lib/index');
+var ghpages = require("../lib/index");
 var Git = require("../lib/git");
-var program = require('commander');
-var path = require('path');
-var pkg = require('../package.json');
+var program = require("commander");
+var path = require("path");
+var pkg = require("../package.json");
 
 function main(args) {
   program
     .version(pkg.version)
-    .option('-d, --dist <dist>', 'Base directory for all source files')
+    .option("-d, --dist <dist>", "Base directory for all source files")
     .option(
-      '-s, --src <src>',
-      'Pattern used to select which files to publish',
-      '**/*'
+      "-s, --src <src>",
+      "Pattern used to select which files to publish",
+      "**/*"
     )
     .option(
-      '-b, --branch <branch>',
-      'Name of the branch you are pushing to',
-      'gh-pages'
+      "-b, --branch <branch>",
+      "Name of the branch you are pushing to",
+      "gh-pages"
     )
     .option(
-      '-e, --dest <dest>',
-      'Target directory within the destination branch (relative to the root)',
-      '.'
+      "-e, --dest <dest>",
+      "Target directory within the destination branch (relative to the root)",
+      "."
     )
-    .option('-a, --add', 'Only add, and never remove existing files')
-    .option('-x, --silent', 'Do not output the repository url')
-    .option('-m, --message <message>', 'commit message', 'Updates')
-    .option('-g, --tag <tag>', 'add tag to commit')
-    .option('-t, --dotfiles', 'Include dotfiles')
-    .option('-r, --repo <repo>', 'URL of the repository you are pushing to')
-    .option('-p, --depth <depth>', 'depth for clone', 1)
-    .option('-o, --remote <name>', 'The name of the remote', 'origin')
+    .option("-a, --add", "Only add, and never remove existing files")
+    .option("-x, --silent", "Do not output the repository url")
+    .option("-m, --message <message>", "commit message", "Updates")
+    .option("-g, --tag <tag>", "add tag to commit")
+    .option("-t, --dotfiles", "Include dotfiles")
+    .option("-r, --repo <repo>", "URL of the repository you are pushing to")
+    .option("-p, --depth <depth>", "depth for clone", 1)
+    .option("-o, --remote <name>", "The name of the remote", "origin")
     .option(
-      '-v, --remove <pattern>',
-      'Remove files that match the given pattern ' +
-        '(ignored if used together with --add).',
-      '.'
+      "-v, --remove <pattern>",
+      "Remove files that match the given pattern " +
+        "(ignored if used together with --add).",
+      "."
     )
-    .option('-n, --no-push', 'Commit only (with no push)')
+    .option("-n, --no-push", "Commit only (with no push)")
     .option("-l, --localuser", "Use Git local user config (not global)")
     .option("-u, --user <username,email>", "Override default username, email")
     .parse(args);
@@ -57,7 +57,7 @@ function main(args) {
   } else if (program.user) {
     var userParts = program.user.split(",");
     publish({
-      user: userParts[0],
+      name: userParts[0],
       email: userParts[1]
     });
   } else {
@@ -80,14 +80,14 @@ function main(args) {
         only: program.remove,
         remote: program.remote,
         push: !!program.push,
-        user: user,
+        user: user
       },
       function(err) {
         if (err) {
-          process.stderr.write(err.message + '\n');
+          process.stderr.write(err.message + "\n");
           return process.exit(1);
         }
-        process.stderr.write('Published\n');
+        process.stderr.write("Published\n");
       }
     );
   }
