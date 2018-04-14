@@ -48,8 +48,8 @@
     "tmp": "0.0.33"
   },
   "bin": {
-    "gh-pages": "bin/gh-pages",
-    "gh-pages-clean": "bin/gh-pages-clean"
+    "gh-pages": "bin/gh-pages.js",
+    "gh-pages-clean": "bin/gh-pages-clean.js"
   },
   "eslintConfig": {
     "extends": "tschaub"
