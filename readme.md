@@ -1,3 +1,4 @@
+
 # gh-pages
 
 Publish files to a `gh-pages` branch on GitHub (or any other branch anywhere else).
@@ -327,3 +328,24 @@ NODE_DEBUG=gh-pages npm run deploy
 Note that this plugin requires Git 1.9 or higher (because it uses the `--exit-code` option for `git ls-remote`).  If you'd like to see this working with earlier versions of Git, please [open an issue](https://github.com/tschaub/gh-pages/issues).
 
 [![Current Status](https://secure.travis-ci.org/tschaub/gh-pages.svg?branch=master)](https://travis-ci.org/tschaub/gh-pages)
+
+## Tips
+
+### when get error `branch already exists`
+```
+{ ProcessError: fatal: A branch named 'gh-pages' already exists.
+
+    at ChildProcess.<anonymous> (~/node_modules/gh-pages/lib/git.js:42:16)
+    at ChildProcess.emit (events.js:180:13)
+    at maybeClose (internal/child_process.js:936:16)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:220:5)
+  code: 128,
+  message: 'fatal: A branch named \'gh-pages\' already exists.\n',
+  name: 'ProcessError' }
+  ```
+
+When processing `gh-pages` module generate file in`.cache/` and if stuck some reason like wrong password
+it will not automatically cleanup 
+
+Run `~node_mdules/gh-pages/bin/gh-pages-clean`
+or remove `~node_mdules/gh-pages/.cache`
