@@ -347,5 +347,5 @@ Note that this plugin requires Git 1.9 or higher (because it uses the `--exit-co
 When processing `gh-pages` module generate file in`.cache/` and if stuck some reason like wrong password
 it will not automatically cleanup 
 
-Run `~node_mdules/gh-pages/bin/gh-pages-clean`
-or remove `~node_mdules/gh-pages/.cache`
+Run `~node_modules/gh-pages/bin/gh-pages-clean`
+or remove `~node_modules/gh-pages/.cache`
