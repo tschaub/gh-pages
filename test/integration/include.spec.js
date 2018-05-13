@@ -15,7 +15,7 @@ describe('the src option', function() {
     var expected = path.join(fixtures, fixtureName, 'expected');
     var branch = 'gh-pages';
 
-    helper.setupRemote(fixtureName, branch).then(function(url) {
+    helper.setupRemote(fixtureName, {branch: branch}).then(function(url) {
       var options = {
         repo: url,
         src: '**/*.js',

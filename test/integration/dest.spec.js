@@ -16,7 +16,7 @@ describe('the dest option', function() {
     var branch = 'gh-pages';
     var dest = 'target';
 
-    helper.setupRemote(fixtureName, branch).then(function(url) {
+    helper.setupRemote(fixtureName, {branch: branch}).then(function(url) {
       var options = {
         repo: url,
         dest: dest,

@@ -15,7 +15,7 @@ describe('basic usage', function() {
     var expected = path.join(fixtures, fixtureName, 'expected');
     var branch = 'gh-pages';
 
-    helper.setupRemote(fixtureName, branch).then(function(url) {
+    helper.setupRemote(fixtureName, {branch: branch}).then(function(url) {
       var options = {
         repo: url,
         user: {
@@ -41,7 +41,7 @@ describe('basic usage', function() {
     var local = path.join(fixtures, fixtureName, 'local');
     var branch = 'master';
 
-    helper.setupRemote(fixtureName, branch).then(function(url) {
+    helper.setupRemote(fixtureName, {branch: branch}).then(function(url) {
       var options = {
         repo: url,
         branch: branch,
