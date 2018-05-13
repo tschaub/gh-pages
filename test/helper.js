@@ -43,7 +43,7 @@ function setupRemote(fixtureName, options) {
   options = options || {};
   var branch = options.branch || 'gh-pages';
   var userEmail = (options.user && options.user.email) || 'user@email.com';
-  var userName = (options.name && options.user.name) || 'User Name';
+  var userName = (options.user && options.user.name) || 'User Name';
   return mkdtemp()
     .then(function(remote) {
       return new Git(remote).exec('init', '--bare').then(relay(remote));
