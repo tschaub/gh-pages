@@ -53,5 +53,6 @@
   },
   "eslintConfig": {
     "extends": "tschaub"
-  }
+  },
+  "types": "lib/index.d.ts"
 }
