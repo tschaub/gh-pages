@@ -1,31 +1,31 @@
 export as namespace ghpages;
 
 export interface config {
-    dest?: string,
-    add?: boolean,
-    git?: string,
-    depth?: number,
-    dotfiles?: boolean,
-    branch?: string,
-    repo?: string,
-    remote?: string,
-    src?: string|string[],
-    only?: string,
-    push?: boolean,
-    message?: string,
-    silent?: boolean,
-    clone?: string,
-    user?: {
-      email: string,
-      name: string,
-    },
-    tag?: string,
-  }
+  src?: string|string[],
+  branch?: string,
+  dest?: string,
+  dotfiles?: boolean,
+  add?: boolean,
+  repo?: string,
+  remote?: string,
+  tag?: string,
+  message?: string,
+  user?: {
+    email: string,
+    name: string,
+  },
+  clone?: string,
+  push?: boolean,
+  silent?: boolean,
+  git?: string,
+  depth?: number,
+  only?: string,
+}
 
 export function publish(
-    basePath: string,
-    config?: config,
-    callback?: (err: any) => any,
-  ): void;
+  dir: string,
+  options?: config,
+  callback?: (err: any) => any,
+): void;
 
 export function clean(): void;
