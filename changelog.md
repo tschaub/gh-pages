@@ -1,3 +1,16 @@
+## v1.2.0
+
+ * [#252](https://github.com/tschaub/gh-pages/pull/252) - Update dependencies ([@tschaub](https://github.com/tschaub))
+ * [#245](https://github.com/tschaub/gh-pages/pull/245) - Typos ([@thekevinscott](https://github.com/thekevinscott))
+ * [#251](https://github.com/tschaub/gh-pages/pull/251) - Update async to the latest version 🚀 ([@tschaub](https://github.com/tschaub))
+ * [#243](https://github.com/tschaub/gh-pages/pull/243) - docs(readme.md): add tips ([@polyglotm](https://github.com/polyglotm))
+ * [#241](https://github.com/tschaub/gh-pages/pull/241) - Update sinon to the latest version 🚀 ([@tschaub](https://github.com/tschaub))
+ * [#240](https://github.com/tschaub/gh-pages/pull/240) - Update eslint-config-tschaub to the latest version 🚀 ([@tschaub](https://github.com/tschaub))
+ * [#239](https://github.com/tschaub/gh-pages/pull/239) - Assorted updates ([@tschaub](https://github.com/tschaub))
+ * [#238](https://github.com/tschaub/gh-pages/pull/238) - fix(package): update commander to version 2.15.1 ([@tschaub](https://github.com/tschaub))
+ * [#237](https://github.com/tschaub/gh-pages/pull/237) - chore(package): update mocha to version 5.0.5 ([@tschaub](https://github.com/tschaub))
+ * [#232](https://github.com/tschaub/gh-pages/pull/232) - Update sinon to the latest version 🚀 ([@tschaub](https://github.com/tschaub))
+
 ## v1.1.0
 
  * [#218](https://github.com/tschaub/gh-pages/pull/218) - Update dependencies, test on Node 8 ([@tschaub](https://github.com/tschaub))
