@@ -33,7 +33,7 @@
     "async": "2.6.1",
     "base64url": "^2.0.0",
     "commander": "2.15.1",
-    "fs-extra": "^5.0.0",
+    "fs-extra": "^6.0.0",
     "globby": "^6.1.0",
     "graceful-fs": "4.1.11",
     "rimraf": "^2.6.2"
