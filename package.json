@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "async": "2.6.1",
-    "commander": "2.15.1",
+    "commander": "2.16.0",
     "filenamify-url": "^1.0.0",
     "fs-extra": "^5.0.0",
     "globby": "^6.1.0",
