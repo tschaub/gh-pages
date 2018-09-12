@@ -1,9 +1,9 @@
-var helper = require('../helper');
-var ghPages = require('../../lib/');
-var path = require('path');
+const helper = require('../helper');
+const ghPages = require('../../lib/');
+const path = require('path');
 
-var fixtures = path.join(__dirname, 'fixtures');
-var fixtureName = 'include';
+const fixtures = path.join(__dirname, 'fixtures');
+const fixtureName = 'include';
 
 beforeEach(function() {
   ghPages.clean();
@@ -11,12 +11,12 @@ beforeEach(function() {
 
 describe('the src option', function() {
   it('can be used to limit which files are included', function(done) {
-    var local = path.join(fixtures, fixtureName, 'local');
-    var expected = path.join(fixtures, fixtureName, 'expected');
-    var branch = 'gh-pages';
+    const local = path.join(fixtures, fixtureName, 'local');
+    const expected = path.join(fixtures, fixtureName, 'expected');
+    const branch = 'gh-pages';
 
     helper.setupRemote(fixtureName, branch).then(function(url) {
-      var options = {
+      const options = {
         repo: url,
         src: '**/*.js',
         user: {

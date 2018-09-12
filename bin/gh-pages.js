@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-var ghpages = require('../lib/index');
-var program = require('commander');
-var path = require('path');
-var pkg = require('../package.json');
+const ghpages = require('../lib/index');
+const program = require('commander');
+const path = require('path');
+const pkg = require('../package.json');
 
 function main(args) {
   program
