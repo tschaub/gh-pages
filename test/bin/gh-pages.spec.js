@@ -1,6 +1,6 @@
-var ghpages = require('../../lib/index');
-var sinon = require('sinon');
-var cli = require('../../bin/gh-pages');
+const ghpages = require('../../lib/index');
+const sinon = require('sinon');
+const cli = require('../../bin/gh-pages');
 
 describe('gh-pages', function() {
   beforeEach(function() {
@@ -11,7 +11,7 @@ describe('gh-pages', function() {
     ghpages.publish.restore();
   });
 
-  var defaults = {
+  const defaults = {
     repo: undefined,
     silent: false,
     branch: 'gh-pages',
@@ -24,7 +24,7 @@ describe('gh-pages', function() {
     push: true
   };
 
-  var scenarions = [
+  const scenarions = [
     ['--dist lib', 'lib', defaults],
     ['--dist lib -n', 'lib', {push: false}],
     ['--dist lib -x', 'lib', {silent: true}],
@@ -34,9 +34,9 @@ describe('gh-pages', function() {
   ];
 
   scenarions.forEach(function(scenario) {
-    var args = scenario[0].split(' ');
-    var dist = scenario[1];
-    var config = scenario[2];
+    const args = scenario[0].split(' ');
+    const dist = scenario[1];
+    const config = scenario[2];
 
     it(args.join(' '), function() {
       cli(['node', 'gh-pages'].concat(args));

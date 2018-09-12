@@ -1,9 +1,9 @@
-var helper = require('../helper');
-var ghPages = require('../../lib/');
-var path = require('path');
+const helper = require('../helper');
+const ghPages = require('../../lib/');
+const path = require('path');
 
-var fixtures = path.join(__dirname, 'fixtures');
-var fixtureName = 'basic';
+const fixtures = path.join(__dirname, 'fixtures');
+const fixtureName = 'basic';
 
 beforeEach(function() {
   ghPages.clean();
@@ -11,12 +11,12 @@ beforeEach(function() {
 
 describe('basic usage', function() {
   it('pushes the contents of a directory to a gh-pages branch', function(done) {
-    var local = path.join(fixtures, fixtureName, 'local');
-    var expected = path.join(fixtures, fixtureName, 'expected');
-    var branch = 'gh-pages';
+    const local = path.join(fixtures, fixtureName, 'local');
+    const expected = path.join(fixtures, fixtureName, 'expected');
+    const branch = 'gh-pages';
 
     helper.setupRemote(fixtureName, branch).then(function(url) {
-      var options = {
+      const options = {
         repo: url,
         user: {
           name: 'User Name',
@@ -38,11 +38,11 @@ describe('basic usage', function() {
   });
 
   it('can push to a different branch', function(done) {
-    var local = path.join(fixtures, fixtureName, 'local');
-    var branch = 'master';
+    const local = path.join(fixtures, fixtureName, 'local');
+    const branch = 'master';
 
     helper.setupRemote(fixtureName, branch).then(function(url) {
-      var options = {
+      const options = {
         repo: url,
         branch: branch,
         user: {

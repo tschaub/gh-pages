@@ -1,9 +1,9 @@
-var chai = require('chai');
-var tmp = require('tmp');
-var path = require('path');
-var fs = require('fs-extra');
-var Git = require('../lib/git');
-var compare = require('dir-compare').compareSync;
+const chai = require('chai');
+const tmp = require('tmp');
+const path = require('path');
+const fs = require('fs-extra');
+const Git = require('../lib/git');
+const compare = require('dir-compare').compareSync;
 
 /**
  * Turn off maxListeners warning during the tests
@@ -20,7 +20,7 @@ chai.config.includeStack = true;
  */
 exports.assert = chai.assert;
 
-var fixtures = path.join(__dirname, 'integration', 'fixtures');
+const fixtures = path.join(__dirname, 'integration', 'fixtures');
 
 function mkdtemp() {
   return new Promise(function(resolve, reject) {
@@ -41,9 +41,9 @@ function relay(value) {
 
 function setupRemote(fixtureName, options) {
   options = options || {};
-  var branch = options.branch || 'gh-pages';
-  var userEmail = (options.user && options.user.email) || 'user@email.com';
-  var userName = (options.name && options.user.name) || 'User Name';
+  const branch = options.branch || 'gh-pages';
+  const userEmail = (options.user && options.user.email) || 'user@email.com';
+  const userName = (options.name && options.user.name) || 'User Name';
   return mkdtemp()
     .then(function(remote) {
       return new Git(remote).exec('init', '--bare').then(relay(remote));
@@ -73,7 +73,7 @@ function setupRemote(fixtureName, options) {
           return git.commit('Initial commit');
         })
         .then(function(git) {
-          var url = 'file://' + remote;
+          const url = 'file://' + remote;
           return git.exec('push', url, branch).then(relay(url));
         });
     });
@@ -82,25 +82,25 @@ function setupRemote(fixtureName, options) {
 function assertContentsMatch(dir, url, branch) {
   return mkdtemp()
     .then(function(root) {
-      var clone = path.join(root, 'repo');
-      var options = {git: 'git', remote: 'origin', depth: 1};
+      const clone = path.join(root, 'repo');
+      const options = {git: 'git', remote: 'origin', depth: 1};
       return Git.clone(url, clone, branch, options);
     })
     .then(function(git) {
-      var comparison = compare(dir, git.cwd, {excludeFilter: '.git'});
+      const comparison = compare(dir, git.cwd, {excludeFilter: '.git'});
       if (comparison.same) {
         return true;
       } else {
-        var message = comparison.diffSet
+        const message = comparison.diffSet
           .map(function(entry) {
-            var state = {
+            const state = {
               equal: '==',
               left: '->',
               right: '<-',
               distinct: '<>'
             }[entry.state];
-            var name1 = entry.name1 ? entry.name1 : '<none>';
-            var name2 = entry.name2 ? entry.name2 : '<none>';
+            const name1 = entry.name1 ? entry.name1 : '<none>';
+            const name2 = entry.name2 ? entry.name2 : '<none>';
 
             return [name1, state, name2].join(' ');
           })
