@@ -27,25 +27,25 @@
     "test": "mocha --recursive test"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "dependencies": {
-    "async": "2.6.1",
-    "commander": "2.15.1",
+    "async": "^2.6.1",
+    "commander": "^2.18.0",
     "filenamify-url": "^1.0.0",
-    "fs-extra": "^5.0.0",
+    "fs-extra": "^7.0.0",
     "globby": "^6.1.0",
-    "graceful-fs": "4.1.11",
+    "graceful-fs": "^4.1.11",
     "rimraf": "^2.6.2"
   },
   "devDependencies": {
     "chai": "^4.1.2",
     "dir-compare": "^1.4.0",
-    "eslint": "^4.19.1",
-    "eslint-config-tschaub": "^10.0.0",
-    "mocha": "^5.0.5",
-    "sinon": "^5.0.1",
-    "tmp": "0.0.33"
+    "eslint": "^5.5.0",
+    "eslint-config-tschaub": "^12.0.1",
+    "mocha": "^5.2.0",
+    "sinon": "^6.2.0",
+    "tmp": "^0.0.33"
   },
   "bin": {
     "gh-pages": "bin/gh-pages.js",
