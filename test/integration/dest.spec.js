@@ -16,7 +16,7 @@ describe('the dest option', function() {
     const branch = 'gh-pages';
     const dest = 'target';
 
-    helper.setupRemote(fixtureName, branch).then(function(url) {
+    helper.setupRemote(fixtureName, {branch}).then(function(url) {
       const options = {
         repo: url,
         dest: dest,
@@ -26,15 +26,13 @@ describe('the dest option', function() {
         }
       };
 
-      ghPages.publish(local, options, function(err) {
+      ghPages.publish(local, options, err => {
         if (err) {
           return done(err);
         }
         helper
           .assertContentsMatch(expected, url, branch)
-          .then(function() {
-            done();
-          })
+          .then(() => done())
           .catch(done);
       });
     });

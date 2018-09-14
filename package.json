@@ -32,6 +32,7 @@
   "dependencies": {
     "async": "^2.6.1",
     "commander": "^2.18.0",
+    "email-addresses": "^3.0.1",
     "filenamify-url": "^1.0.0",
     "fs-extra": "^7.0.0",
     "globby": "^6.1.0",
