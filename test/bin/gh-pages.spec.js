@@ -1,4 +1,3 @@
-const helper = require('../helper');
 const ghpages = require('../../lib/index');
 const sinon = require('sinon');
 const cli = require('../../bin/gh-pages');
@@ -78,7 +77,8 @@ describe('gh-pages', () => {
       {
         args: ['--dist', 'lib', '-u', 'junk email'],
         dist: 'lib',
-        error: 'Could not parse "Full Name <email@example.com>" from junk email'
+        error:
+          'Could not parse name and email from user option "junk email" (format should be "Your Name <email@example.com>")'
       }
     ];
 
@@ -105,24 +105,6 @@ describe('gh-pages', () => {
             assert.equal(err.message, error);
             done();
           });
-      });
-    });
-  });
-
-  describe('getUser', () => {
-    it('gets the locally configured user', done => {
-      const name = 'Full Name';
-      const email = 'email@example.com';
-
-      helper.setupRepo('basic', {user: {name, email}}).then(dir => {
-        cli
-          .getUser(dir)
-          .then(user => {
-            assert.equal(user.name, name);
-            assert.equal(user.email, email);
-            done();
-          })
-          .catch(done);
       });
     });
   });

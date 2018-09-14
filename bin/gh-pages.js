@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const ghpages = require('../lib/index');
-const Git = require('../lib/git');
 const program = require('commander');
 const path = require('path');
 const pkg = require('../package.json');
@@ -17,20 +16,6 @@ function publish(config) {
       resolve();
     });
   });
-}
-
-function getUser(cwd) {
-  return Promise.all([
-    new Git(cwd).exec('config', 'user.name'),
-    new Git(cwd).exec('config', 'user.email')
-  ])
-    .then(results => {
-      return {name: results[0].output.trim(), email: results[1].output.trim()};
-    })
-    .catch(err => {
-      // git config exits with 1 if name or email is not set
-      return null;
-    });
 }
 
 function main(args) {
@@ -74,38 +59,35 @@ function main(args) {
       .option('-n, --no-push', 'Commit only (with no push)')
       .parse(args);
 
-    let userPromise;
+    let user;
     if (program.user) {
       const parts = addr.parseOneAddress(program.user);
       if (!parts) {
         throw new Error(
-          'Could not parse "Full Name <email@example.com>" from ' + program.user
+          `Could not parse name and email from user option "${program.user}" ` +
+            '(format should be "Your Name <email@example.com>")'
         );
       }
-      userPromise = Promise.resolve({name: parts.name, email: parts.address});
-    } else {
-      userPromise = getUser();
+      user = {name: parts.name, email: parts.address};
     }
 
-    return userPromise.then(user => {
-      const config = {
-        repo: program.repo,
-        silent: !!program.silent,
-        branch: program.branch,
-        src: program.src,
-        dest: program.dest,
-        message: program.message,
-        tag: program.tag,
-        dotfiles: !!program.dotfiles,
-        add: !!program.add,
-        only: program.remove,
-        remote: program.remote,
-        push: !!program.push,
-        user: user
-      };
+    const config = {
+      repo: program.repo,
+      silent: !!program.silent,
+      branch: program.branch,
+      src: program.src,
+      dest: program.dest,
+      message: program.message,
+      tag: program.tag,
+      dotfiles: !!program.dotfiles,
+      add: !!program.add,
+      only: program.remove,
+      remote: program.remote,
+      push: !!program.push,
+      user: user
+    };
 
-      return publish(config);
-    });
+    return publish(config);
   });
 }
 
@@ -115,9 +97,8 @@ if (require.main === module) {
       process.stdout.write('Published\n');
     })
     .catch(err => {
-      process.stderr.write(err.message, () => process.exit(1));
+      process.stderr.write(`${err.message}\n`, () => process.exit(1));
     });
 }
 
 exports = module.exports = main;
-exports.getUser = getUser;

@@ -1,8 +1,7 @@
 const path = require('path');
-
 const assert = require('../helper').assert;
-
 const util = require('../../lib/util');
+const helper = require('../helper');
 
 describe('util', () => {
   let files;
@@ -109,6 +108,24 @@ describe('util', () => {
       ];
 
       assert.deepEqual(got, expected);
+    });
+  });
+
+  describe('getUser', () => {
+    it('gets the locally configured user', done => {
+      const name = 'Full Name';
+      const email = 'email@example.com';
+
+      helper.setupRepo('basic', {user: {name, email}}).then(dir => {
+        util
+          .getUser(dir)
+          .then(user => {
+            assert.equal(user.name, name);
+            assert.equal(user.email, email);
+            done();
+          })
+          .catch(done);
+      });
     });
   });
 });

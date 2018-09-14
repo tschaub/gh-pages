@@ -228,26 +228,6 @@ ghpages.publish('dist', {
 ```
 
 
-#### <a id="optionsclone">options.clone</a>
- * type: `string`
- * default: temporary directory inside the `gh-pages` directory
-
-Path to a directory where your repository will be cloned.  If this directory doesn't already exist, it will be created.  If it already exists, it is assumed to be a clone of your repository.
-
-Example use of the `clone` option:
-
-```js
-/**
- * If you already have a temp directory, and want the repository cloned there,
- * use the `clone` option as below.  To avoid re-cloning every time the task is
- * run, this should be a directory that sticks around for a while.
- */
-ghpages.publish('dist', {
-  clone: 'path/to/tmp/dir'
-}, callback);
-```
-
-
 #### <a id="optionspush">options.push</a>
  * type: `boolean`
  * default: `true`
