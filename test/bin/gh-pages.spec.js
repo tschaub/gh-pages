@@ -1,46 +1,111 @@
 const ghpages = require('../../lib/index');
 const sinon = require('sinon');
 const cli = require('../../bin/gh-pages');
+const assert = require('../helper').assert;
 
-describe('gh-pages', function() {
-  beforeEach(function() {
-    sinon.stub(ghpages, 'publish');
-  });
+describe('gh-pages', () => {
+  describe('main', () => {
+    beforeEach(() => {
+      sinon
+        .stub(ghpages, 'publish')
+        .callsFake((basePath, config, callback) => callback());
+    });
 
-  afterEach(function() {
-    ghpages.publish.restore();
-  });
+    afterEach(() => {
+      ghpages.publish.restore();
+    });
 
-  const defaults = {
-    repo: undefined,
-    silent: false,
-    branch: 'gh-pages',
-    src: '**/*',
-    dest: '.',
-    message: 'Updates',
-    dotfiles: false,
-    add: false,
-    remote: 'origin',
-    push: true
-  };
+    const defaults = {
+      repo: undefined,
+      silent: false,
+      branch: 'gh-pages',
+      src: '**/*',
+      dest: '.',
+      message: 'Updates',
+      dotfiles: false,
+      add: false,
+      remote: 'origin',
+      push: true
+    };
 
-  const scenarions = [
-    ['--dist lib', 'lib', defaults],
-    ['--dist lib -n', 'lib', {push: false}],
-    ['--dist lib -x', 'lib', {silent: true}],
-    ['--dist lib --dotfiles', 'lib', {dotfiles: true}],
-    ['--dist lib --dest target', 'lib', {dest: 'target'}],
-    ['--dist lib -a', 'lib', {add: true}]
-  ];
+    const scenarios = [
+      {
+        args: ['--dist', 'lib'],
+        dist: 'lib',
+        config: defaults
+      },
+      {
+        args: ['--dist', 'lib', '-n'],
+        dist: 'lib',
+        config: {push: false}
+      },
+      {
+        args: ['--dist', 'lib', '-x'],
+        dist: 'lib',
+        config: {silent: true}
+      },
+      {
+        args: ['--dist', 'lib', '--dotfiles'],
+        dist: 'lib',
+        config: {dotfiles: true}
+      },
+      {
+        args: ['--dist', 'lib', '--dest', 'target'],
+        dist: 'lib',
+        config: {dest: 'target'}
+      },
+      {
+        args: ['--dist', 'lib', '-a', 'target'],
+        dist: 'lib',
+        config: {add: true}
+      },
+      {
+        args: ['--dist', 'lib', '--user', 'Full Name <email@example.com>'],
+        dist: 'lib',
+        config: {user: {name: 'Full Name', email: 'email@example.com'}}
+      },
+      {
+        args: ['--dist', 'lib', '--user', 'email@example.com'],
+        dist: 'lib',
+        config: {user: {name: null, email: 'email@example.com'}}
+      },
+      {
+        args: ['--dist', 'lib', '-u', 'Full Name <email@example.com>'],
+        dist: 'lib',
+        config: {user: {name: 'Full Name', email: 'email@example.com'}}
+      },
+      {
+        args: ['--dist', 'lib', '-u', 'junk email'],
+        dist: 'lib',
+        error:
+          'Could not parse name and email from user option "junk email" (format should be "Your Name <email@example.com>")'
+      }
+    ];
 
-  scenarions.forEach(function(scenario) {
-    const args = scenario[0].split(' ');
-    const dist = scenario[1];
-    const config = scenario[2];
-
-    it(args.join(' '), function() {
-      cli(['node', 'gh-pages'].concat(args));
-      sinon.assert.calledWithMatch(ghpages.publish, dist, config);
+    scenarios.forEach(({args, dist, config, error}) => {
+      let title = args.join(' ');
+      if (error) {
+        title += ' (user error)';
+      }
+      it(title, done => {
+        cli(['node', 'gh-pages'].concat(args))
+          .then(() => {
+            if (error) {
+              done(new Error(`Expected error "${error}" but got success`));
+              return;
+            }
+            sinon.assert.calledWithMatch(ghpages.publish, dist, config);
+            done();
+          })
+          .catch(err => {
+            if (!error) {
+              done(err);
+              return;
+            }
+            assert.equal(err.message, error);
+            done();
+          });
+      });
     });
   });
 });

@@ -5,17 +5,17 @@ const path = require('path');
 const fixtures = path.join(__dirname, 'fixtures');
 const fixtureName = 'include';
 
-beforeEach(function() {
+beforeEach(() => {
   ghPages.clean();
 });
 
-describe('the src option', function() {
-  it('can be used to limit which files are included', function(done) {
+describe('the src option', () => {
+  it('can be used to limit which files are included', done => {
     const local = path.join(fixtures, fixtureName, 'local');
     const expected = path.join(fixtures, fixtureName, 'expected');
     const branch = 'gh-pages';
 
-    helper.setupRemote(fixtureName, branch).then(function(url) {
+    helper.setupRemote(fixtureName, {branch}).then(url => {
       const options = {
         repo: url,
         src: '**/*.js',
@@ -25,15 +25,13 @@ describe('the src option', function() {
         }
       };
 
-      ghPages.publish(local, options, function(err) {
+      ghPages.publish(local, options, err => {
         if (err) {
           return done(err);
         }
         helper
           .assertContentsMatch(expected, url, branch)
-          .then(function() {
-            done();
-          })
+          .then(() => done())
           .catch(done);
       });
     });
