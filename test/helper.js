@@ -23,8 +23,8 @@ exports.assert = chai.assert;
 const fixtures = path.join(__dirname, 'integration', 'fixtures');
 
 function mkdtemp() {
-  return new Promise(function(resolve, reject) {
-    tmp.dir({unsafeCleanup: true}, function(err, tmpPath) {
+  return new Promise((resolve, reject) => {
+    tmp.dir({unsafeCleanup: true}, (err, tmpPath) => {
       if (err) {
         return reject(err);
       }

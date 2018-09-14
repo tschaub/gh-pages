@@ -6,13 +6,13 @@ const assert = require('../helper').assert;
 
 describe('gh-pages', () => {
   describe('main', () => {
-    beforeEach(function() {
+    beforeEach(() => {
       sinon
         .stub(ghpages, 'publish')
         .callsFake((basePath, config, callback) => callback());
     });
 
-    afterEach(function() {
+    afterEach(() => {
       ghpages.publish.restore();
     });
 

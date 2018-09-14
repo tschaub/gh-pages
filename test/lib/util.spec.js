@@ -4,9 +4,9 @@ const assert = require('../helper').assert;
 
 const util = require('../../lib/util');
 
-describe('util', function() {
+describe('util', () => {
   let files;
-  beforeEach(function() {
+  beforeEach(() => {
     files = [
       path.join('a1', 'b1', 'c2', 'd2.txt'),
       path.join('a1', 'b2', 'c2', 'd1.txt'),
@@ -23,8 +23,8 @@ describe('util', function() {
     ].slice();
   });
 
-  describe('byShortPath', function() {
-    it('sorts an array of filepaths, shortest first', function() {
+  describe('byShortPath', () => {
+    it('sorts an array of filepaths, shortest first', () => {
       files.sort(util.byShortPath);
 
       const expected = [
@@ -46,8 +46,8 @@ describe('util', function() {
     });
   });
 
-  describe('uniqueDirs', function() {
-    it('gets a list of unique directory paths', function() {
+  describe('uniqueDirs', () => {
+    it('gets a list of unique directory paths', () => {
       // not comparing order here, so we sort both
       const got = util.uniqueDirs(files).sort();
 
@@ -67,8 +67,8 @@ describe('util', function() {
       assert.deepEqual(got, expected);
     });
 
-    it('gets a list of unique directories on absolute paths', function() {
-      const absoluteFiles = files.map(function(path) {
+    it('gets a list of unique directories on absolute paths', () => {
+      const absoluteFiles = files.map(path => {
         return '/' + path;
       });
       // not comparing order here, so we sort both
@@ -91,8 +91,8 @@ describe('util', function() {
     });
   });
 
-  describe('dirsToCreate', function() {
-    it('gets a sorted list of directories to create', function() {
+  describe('dirsToCreate', () => {
+    it('gets a sorted list of directories to create', () => {
       const got = util.dirsToCreate(files);
 
       const expected = [

@@ -5,12 +5,12 @@ const path = require('path');
 const fixtures = path.join(__dirname, 'fixtures');
 const fixtureName = 'include';
 
-beforeEach(function() {
+beforeEach(() => {
   ghPages.clean();
 });
 
-describe('the src option', function() {
-  it('can be used to limit which files are included', function(done) {
+describe('the src option', () => {
+  it('can be used to limit which files are included', done => {
     const local = path.join(fixtures, fixtureName, 'local');
     const expected = path.join(fixtures, fixtureName, 'expected');
     const branch = 'gh-pages';
