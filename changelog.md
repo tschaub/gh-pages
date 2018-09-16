@@ -1,3 +1,14 @@
+## v2.0.0
+
+Breaking changes:
+
+ * Requires Node 6 and above.  If you require support for Node 4, stick with v1.2.0.
+ * The git user for commits is determined by running `git config user.name` and `git config user.email` in the current working directory when `gh-pages` is run.  Ideally, this is what you want.  In v1, the git user was determined based on the `gh-pages` install directory.  If the package was installed globally, the git user might not have been what you expected when running in a directory with a locally configured git user.
+
+ * [#264](https://github.com/tschaub/gh-pages/pull/264) - Better user handling (thanks @holloway for getting this going and @nuklearfiziks and @paulirish for pushing it over the edge)
+ * [#263](https://github.com/tschaub/gh-pages/pull/263) - Infra: newer syntax and upgrade deps to latest stable versions ([@AviVahl](https://github.com/AviVahl))
+
+
 ## v1.2.0
 
  * [#252](https://github.com/tschaub/gh-pages/pull/252) - Update dependencies ([@tschaub](https://github.com/tschaub))
