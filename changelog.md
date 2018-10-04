@@ -1,3 +1,7 @@
+## v2.0.1
+
+ * [#268](https://github.com/tschaub/gh-pages/pull/268) - Continue even if no git configured user.
+
 ## v2.0.0
 
 Breaking changes:
