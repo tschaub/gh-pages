@@ -1,4 +1,5 @@
 /test/
 /tasks/
 /.travis.yml
+/.cache/
 *.tgz
