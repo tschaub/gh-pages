@@ -44,7 +44,7 @@
     "dir-compare": "^1.4.0",
     "eslint": "^5.5.0",
     "eslint-config-tschaub": "^12.0.1",
-    "mocha": "^5.2.0",
+    "mocha": "^6.0.0",
     "sinon": "^6.2.0",
     "tmp": "^0.0.33"
   },
