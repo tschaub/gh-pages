@@ -81,7 +81,7 @@ function main(args) {
       tag: program.tag,
       dotfiles: !!program.dotfiles,
       add: !!program.add,
-      only: program.remove,
+      only: program.remove.includes(',') ? program.remove.split(',') : program.remove,
       remote: program.remote,
       push: !!program.push,
       user: user
