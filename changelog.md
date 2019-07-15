@@ -1,3 +1,8 @@
+## v2.1.0
+
+ * [#307](https://github.com/tschaub/gh-pages/pull/307) - Dev dependency updates ([@tschaub](https://github.com/tschaub))
+ * [#303](https://github.com/tschaub/gh-pages/pull/303) - Support '--git' CLI option ([@JRJurman](https://github.com/JRJurman))
+
 ## v2.0.1
 
  * [#268](https://github.com/tschaub/gh-pages/pull/268) - Continue even if no git configured user.
