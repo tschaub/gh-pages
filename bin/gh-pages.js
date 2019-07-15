@@ -42,6 +42,7 @@ function main(args) {
       .option('-x, --silent', 'Do not output the repository url')
       .option('-m, --message <message>', 'commit message', 'Updates')
       .option('-g, --tag <tag>', 'add tag to commit')
+      .option('--git <git>', 'Path to git executable')
       .option('-t, --dotfiles', 'Include dotfiles')
       .option('-r, --repo <repo>', 'URL of the repository you are pushing to')
       .option('-p, --depth <depth>', 'depth for clone', 1)
@@ -79,6 +80,7 @@ function main(args) {
       dest: program.dest,
       message: program.message,
       tag: program.tag,
+      git: program.git,
       dotfiles: !!program.dotfiles,
       add: !!program.add,
       only: program.remove,
