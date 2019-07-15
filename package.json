@@ -40,13 +40,13 @@
     "rimraf": "^2.6.2"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
-    "dir-compare": "^1.4.0",
-    "eslint": "^5.5.0",
-    "eslint-config-tschaub": "^12.0.1",
-    "mocha": "^5.2.0",
-    "sinon": "^6.2.0",
-    "tmp": "^0.0.33"
+    "chai": "^4.2.0",
+    "dir-compare": "^1.7.3",
+    "eslint": "^5.16.0",
+    "eslint-config-tschaub": "^13.1.0",
+    "mocha": "^6.1.4",
+    "sinon": "^7.3.2",
+    "tmp": "^0.1.0"
   },
   "bin": {
     "gh-pages": "bin/gh-pages.js",

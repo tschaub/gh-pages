@@ -60,6 +60,11 @@ describe('gh-pages', () => {
         config: {add: true}
       },
       {
+        args: ['--dist', 'lib', '--git', 'path/to/git'],
+        dist: 'lib',
+        config: {git: 'path/to/git'}
+      },
+      {
         args: ['--dist', 'lib', '--user', 'Full Name <email@example.com>'],
         dist: 'lib',
         config: {user: {name: 'Full Name', email: 'email@example.com'}}
