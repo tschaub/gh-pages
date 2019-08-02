@@ -41,15 +41,16 @@ function main(args) {
       .option('-a, --add', 'Only add, and never remove existing files')
       .option('-x, --silent', 'Do not output the repository url')
       .option('-m, --message <message>', 'commit message', 'Updates')
-      .option('-g, --tag <tag>', 'add tag to commit')
-      .option('--git <git>', 'Path to git executable')
+      .option('-g, --tag <tag>', 'add tag to commit', '')
+      .option('--git <git>', 'Path to git executable', 'git')
       .option('-t, --dotfiles', 'Include dotfiles')
       .option('-r, --repo <repo>', 'URL of the repository you are pushing to')
       .option('-p, --depth <depth>', 'depth for clone', 1)
       .option('-o, --remote <name>', 'The name of the remote', 'origin')
       .option(
         '-u, --user <address>',
-        'The name and email of the user (defaults to the git config).  Format is "Your Name <email@example.com>".'
+        'The name and email of the user (defaults to the git config).  Format is "Your Name <email@example.com>".',
+        null
       )
       .option(
         '-v, --remove <pattern>',
