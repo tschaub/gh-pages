@@ -15,24 +15,11 @@ describe('gh-pages', () => {
       ghpages.publish.restore();
     });
 
-    const defaults = {
-      repo: undefined,
-      silent: false,
-      branch: 'gh-pages',
-      src: '**/*',
-      dest: '.',
-      message: 'Updates',
-      dotfiles: false,
-      add: false,
-      remote: 'origin',
-      push: true
-    };
-
     const scenarios = [
       {
         args: ['--dist', 'lib'],
         dist: 'lib',
-        config: defaults
+        config: ghpages.defaults
       },
       {
         args: ['--dist', 'lib', '-n'],
