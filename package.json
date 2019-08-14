@@ -37,7 +37,7 @@
     "fs-extra": "^7.0.0",
     "globby": "^6.1.0",
     "graceful-fs": "^4.1.11",
-    "rimraf": "^2.6.2"
+    "rimraf": "^3.0.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
