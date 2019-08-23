@@ -92,7 +92,9 @@ function main(args) {
       depth: program.depth,
       dotfiles: !!program.dotfiles,
       add: !!program.add,
-      only: program.remove.includes(',') ? program.remove.split(',') : program.remove,
+      only: program.remove.includes(',')
+        ? program.remove.split(',')
+        : program.remove,
       remote: program.remote,
       push: !!program.push,
       user: user
