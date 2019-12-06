@@ -8,10 +8,7 @@ const addr = require('email-addresses');
 
 function publish(config) {
   return new Promise((resolve, reject) => {
-    let basePath = program.dist;
-    if (!program.dist.startsWith('/')) {
-      basePath = path.join(process.cwd(), program.dist);
-    }
+    const basePath = path.resolve(process.cwd(), program.dist);
     ghpages.publish(basePath, config, err => {
       if (err) {
         return reject(err);
