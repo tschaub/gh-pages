@@ -27,6 +27,11 @@ describe('gh-pages', () => {
         config: {push: false}
       },
       {
+        args: ['--dist', 'lib', '-f'],
+        dist: 'lib',
+        config: {history: false}
+      },
+      {
         args: ['--dist', 'lib', '-x'],
         dist: 'lib',
         config: {silent: true}

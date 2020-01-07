@@ -241,6 +241,19 @@ ghpages.publish('dist', {push: false}, callback);
 ```
 
 
+#### <a id="optionshistory">options.history</a>
+ * type: `boolean`
+ * default: `true`
+
+Push force new commit without parent history.
+
+Example use of the `history` option:
+
+```js
+ghpages.publish('dist', {history: false}, callback);
+```
+
+
 #### <a id="optionssilent">options.silent</a>
  * type: `boolean`
  * default: `false`
