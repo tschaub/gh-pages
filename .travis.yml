@@ -1,15 +1,12 @@
-dist: trusty
-sudo: false
-
 language: node_js
+
 node_js:
   - "6"
   - "8"
   - "10"
+  - "12"
 
-cache:
-  directories:
-    - node_modules
+cache: npm
 
 branches:
   only:
