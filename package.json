@@ -30,7 +30,7 @@
     "node": ">=6"
   },
   "dependencies": {
-    "async": "^2.6.1",
+    "async": "^3.1.1",
     "commander": "^2.18.0",
     "email-addresses": "^3.0.1",
     "filenamify-url": "^1.0.0",
