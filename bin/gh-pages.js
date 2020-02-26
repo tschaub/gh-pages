@@ -81,7 +81,7 @@ function main(args) {
             '(format should be "Your Name <email@example.com>")'
         );
       }
-      user = { name: parts.name, email: parts.address };
+      user = {name: parts.name, email: parts.address};
     }
 
     const config = {
