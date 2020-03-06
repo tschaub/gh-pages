@@ -63,7 +63,7 @@ function main(args) {
         '-v, --remove <pattern>',
         'Remove files that match the given pattern ' +
           '(ignored if used together with --add).',
-        ghpages.defaults.only
+        ghpages.defaults.remove
       )
       .option('-n, --no-push', 'Commit only (with no push)')
       .option(
@@ -96,7 +96,7 @@ function main(args) {
       depth: program.depth,
       dotfiles: !!program.dotfiles,
       add: !!program.add,
-      only: program.remove,
+      remove: program.remove,
       remote: program.remote,
       push: !!program.push,
       history: !!program.history,
