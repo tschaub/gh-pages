@@ -289,6 +289,35 @@ ghpages.publish('dist', {
 ```
 
 
+#### <a id="optionsbeforeadd">options.beforeAdd</a>
+ * type: `function`
+ * default: `null`
+
+Custom callback that is executed right before `git add`.
+
+The CLI expects a file exporting the beforeAdd function
+
+```bash
+gh-pages --before-add ./cleanup.js
+```
+
+Example use of the `beforeAdd` option:
+
+```js
+/**
+ * beforeAdd makes most sense when `add` option is active
+ * Assuming we want to keep everything on the gh-pages branch
+ * but remove just `some-outdated-file.txt`
+ */
+ghpages.publish('dist', {
+  add: true,
+  async beforeAdd(git) {
+    return git.rm('./some-outdated-file.txt');
+  }
+}, callback);
+```
+
+
 #### <a id="optionsgit">options.git</a>
  * type: `string`
  * default: `'git'`

@@ -70,6 +70,10 @@ function main(args) {
         '-f, --no-history',
         'Push force new commit without parent history'
       )
+      .option(
+        '--before-add <file>',
+        'Execute the function exported by <file> before "git add"'
+      )
       .parse(args);
 
     let user;
@@ -82,6 +86,23 @@ function main(args) {
         );
       }
       user = {name: parts.name, email: parts.address};
+    }
+    let beforeAdd;
+    if (program.beforeAdd) {
+      const m = require(require.resolve(program.beforeAdd, {
+        paths: [process.cwd()]
+      }));
+
+      if (typeof m === 'function') {
+        beforeAdd = m;
+      } else if (typeof m === 'object' && typeof m.default === 'function') {
+        beforeAdd = m.default;
+      } else {
+        throw new Error(
+          `Could not find function to execute before adding files in ` +
+            `"${program.beforeAdd}".\n `
+        );
+      }
     }
 
     const config = {
@@ -100,7 +121,8 @@ function main(args) {
       remote: program.remote,
       push: !!program.push,
       history: !!program.history,
-      user: user
+      user: user,
+      beforeAdd: beforeAdd
     };
 
     return publish(config);
