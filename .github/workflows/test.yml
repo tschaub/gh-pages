@@ -22,8 +22,6 @@ jobs:
         os:
           - ubuntu-latest
         node:
-          - 6
-          - 8
           - 10
           - 12
           - 14
