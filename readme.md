@@ -77,6 +77,7 @@ The [minimatch](https://github.com/isaacs/minimatch) pattern or array of pattern
 #### <a id="optionsbranch">options.branch</a>
  * type: `string`
  * default: `'gh-pages'`
+ * `-b | --branch <branch name>`
 
 The name of the branch you'll be pushing to.  The default uses GitHub's `gh-pages` branch, but this can be configured to push to any branch on any remote.
 
@@ -148,6 +149,7 @@ ghpages.publish('dist', {add: true}, callback);
 #### <a id="optionsrepo">options.repo</a>
  * type: `string`
  * default: url for the origin remote of the current dir (assumes a git repository)
+ * `-r | --repo <repo url>`
 
 By default, `gh-pages` assumes that the current working directory is a git repository, and that you want to push changes to the `origin` remote.
 
