@@ -1,6 +1,6 @@
 {
   "name": "gh-pages",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "Publish to a gh-pages branch on GitHub (or any other branch on any other remote)",
   "keywords": [
     "git",
@@ -27,7 +27,8 @@
     "test": "mocha --recursive test"
   },
   "files": [
-    "lib", "bin"
+    "lib",
+    "bin"
   ],
   "engines": {
     "node": ">=10"
