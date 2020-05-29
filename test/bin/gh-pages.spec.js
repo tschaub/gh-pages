@@ -2,6 +2,7 @@ const ghpages = require('../../lib/index');
 const sinon = require('sinon');
 const cli = require('../../bin/gh-pages');
 const assert = require('../helper').assert;
+const beforeAdd = require('./fixtures/beforeAdd');
 
 describe('gh-pages', () => {
   describe('main', () => {
@@ -70,6 +71,16 @@ describe('gh-pages', () => {
         args: ['--dist', 'lib', '-u', 'Full Name <email@example.com>'],
         dist: 'lib',
         config: {user: {name: 'Full Name', email: 'email@example.com'}}
+      },
+      {
+        args: [
+          '--dist',
+          'lib',
+          '--before-add',
+          require.resolve('./fixtures/beforeAdd')
+        ],
+        dist: 'lib',
+        config: {beforeAdd}
       },
       {
         args: ['--dist', 'lib', '-u', 'junk email'],
