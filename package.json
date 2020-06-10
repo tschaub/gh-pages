@@ -1,6 +1,6 @@
 {
   "name": "gh-pages",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "Publish to a gh-pages branch on GitHub (or any other branch on any other remote)",
   "keywords": [
     "git",
@@ -26,8 +26,12 @@
     "pretest": "npm run lint",
     "test": "mocha --recursive test"
   },
+  "files": [
+    "lib",
+    "bin"
+  ],
   "engines": {
-    "node": ">=6"
+    "node": ">=10"
   },
   "dependencies": {
     "async": "^2.6.1",
@@ -40,11 +44,11 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "dir-compare": "^1.8.0",
-    "eslint": "^5.16.0",
+    "eslint": "^7.1.0",
     "eslint-config-tschaub": "^13.1.0",
     "mocha": "^6.2.2",
     "sinon": "^8.0.4",
-    "tmp": "^0.1.0"
+    "tmp": "^0.2.1"
   },
   "bin": {
     "gh-pages": "bin/gh-pages.js",

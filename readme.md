@@ -77,6 +77,7 @@ The [minimatch](https://github.com/isaacs/minimatch) pattern or array of pattern
 #### <a id="optionsbranch">options.branch</a>
  * type: `string`
  * default: `'gh-pages'`
+ * `-b | --branch <branch name>`
 
 The name of the branch you'll be pushing to.  The default uses GitHub's `gh-pages` branch, but this can be configured to push to any branch on any remote.
 
@@ -148,6 +149,7 @@ ghpages.publish('dist', {add: true}, callback);
 #### <a id="optionsrepo">options.repo</a>
  * type: `string`
  * default: url for the origin remote of the current dir (assumes a git repository)
+ * `-r | --repo <repo url>`
 
 By default, `gh-pages` assumes that the current working directory is a git repository, and that you want to push changes to the `origin` remote.
 
@@ -289,6 +291,35 @@ ghpages.publish('dist', {
 ```
 
 
+#### <a id="optionsbeforeadd">options.beforeAdd</a>
+ * type: `function`
+ * default: `null`
+
+Custom callback that is executed right before `git add`.
+
+The CLI expects a file exporting the beforeAdd function
+
+```bash
+gh-pages --before-add ./cleanup.js
+```
+
+Example use of the `beforeAdd` option:
+
+```js
+/**
+ * beforeAdd makes most sense when `add` option is active
+ * Assuming we want to keep everything on the gh-pages branch
+ * but remove just `some-outdated-file.txt`
+ */
+ghpages.publish('dist', {
+  add: true,
+  async beforeAdd(git) {
+    return git.rm('./some-outdated-file.txt');
+  }
+}, callback);
+```
+
+
 #### <a id="optionsgit">options.git</a>
  * type: `string`
  * default: `'git'`
@@ -336,7 +367,7 @@ NODE_DEBUG=gh-pages npm run deploy
 
 Note that this plugin requires Git 1.9 or higher (because it uses the `--exit-code` option for `git ls-remote`).  If you'd like to see this working with earlier versions of Git, please [open an issue](https://github.com/tschaub/gh-pages/issues).
 
-[![Current Status](https://secure.travis-ci.org/tschaub/gh-pages.svg?branch=master)](https://travis-ci.org/tschaub/gh-pages)
+![Test Status](https://github.com/tschaub/gh-pages/workflows/Test/badge.svg)
 
 ## Tips
 

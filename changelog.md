@@ -1,3 +1,19 @@
+## v3.0.0
+
+Breaking changes:
+
+None really.  But tests are no longer run on Node < 10.  Development dependencies were updated to address security warnings, and this meant tests could no longer be run on Node 6 or 8.  If you still use these Node versions, you may still be able to use this library, but be warned that tests are no longer run on these versions.
+
+All changes:
+
+ * [#357](https://github.com/tschaub/gh-pages/pull/357) - Dev dependency updates ([@tschaub](https://github.com/tschaub))
+ * [#333](https://github.com/tschaub/gh-pages/pull/333) - Update readme with command line options ([@Victoire44](https://github.com/Victoire44))
+ * [#356](https://github.com/tschaub/gh-pages/pull/356) - Test as a GitHub action ([@tschaub](https://github.com/tschaub))
+ * [#355](https://github.com/tschaub/gh-pages/pull/355) - feat(beforeAdd): allow custom script before git add ([@Xiphe](https://github.com/Xiphe))
+ * [#336](https://github.com/tschaub/gh-pages/pull/336) - Fix remove not working properly ([@sunghwan2789](https://github.com/sunghwan2789))
+ * [#328](https://github.com/tschaub/gh-pages/pull/328) - Update .travis.yml ([@XhmikosR](https://github.com/XhmikosR))
+ * [#327](https://github.com/tschaub/gh-pages/pull/327) - Fix typo ([@d-tsuji](https://github.com/d-tsuji))
+
 ## v2.2.0
 
  * [#318](https://github.com/tschaub/gh-pages/pull/318) - Allow an absolute path as dist directory ([@okuryu](https://github.com/okuryu))
