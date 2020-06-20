@@ -1,3 +1,10 @@
+## v3.1.0
+
+The cache directory used by `gh-pages` is now `node_modules/.cache/gh-pages`.  If you want to use a different location, set the `CACHE_DIR` environment variable.
+
+ * [#362](https://github.com/tschaub/gh-pages/pull/362) - Move the cache directory ([@tschaub](https://github.com/tschaub))
+ * [#361](https://github.com/tschaub/gh-pages/pull/361) - Update dev dependencies ([@tschaub](https://github.com/tschaub))
+
 ## v3.0.0
 
 Breaking changes:
