@@ -403,3 +403,5 @@ In order to deploy with Github Actions, you will need to define a user and set t
 ```
 
 The `secrets.GITHUB_TOKEN` is provided automatically as part of the Github Action and does not require any further configuration, but simply needs to be passed in as an environmental variable to the step.
+
+See [Issue #345](https://github.com/tschaub/gh-pages/issues/345) for more information
