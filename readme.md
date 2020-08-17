@@ -387,3 +387,19 @@ Note that this plugin requires Git 1.9 or higher (because it uses the `--exit-co
 The `gh-pages` module writes temporary files to a `node_modules/.cache/gh-pages` directory.  The location of this directory can be customized by setting the `CACHE_DIR` environemnt variable.
 
 If `gh-pages` fails, you may find that you need to manually clean up the cache directory.  To remove the cache directory, run `node_modules/gh-pages/bin/gh-pages-clean` or remove `node_modules/.cache/gh-pages`.
+
+### Deploying with Github Actions
+
+In order to deploy with Github Actions, you will need to define a user and set the git repository for the process. See the example step below
+
+```
+    # REPLACE "tschaub/gh-pages" IN THE GIT URL BELOW WITH YOUR REPOSITORY'S INFORMATION
+    - name: Deploy with gh-pages
+      run: |
+        git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/tschaub/gh-pages.git
+        npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+The `secrets.GITHUB_TOKEN` is provided automatically as part of the Github Action and does not require any further configuration, but simply needs to be passed in as an environmental variable to the step.
