@@ -74,6 +74,7 @@ function main(args) {
         '--before-add <file>',
         'Execute the function exported by <file> before "git add"'
       )
+      .option('--domain <domain>', 'Custom Domain to publish page')
       .parse(args);
 
     let user;
@@ -122,7 +123,8 @@ function main(args) {
       push: !!program.push,
       history: !!program.history,
       user: user,
-      beforeAdd: beforeAdd
+      beforeAdd: beforeAdd,
+      domain: program.domain
     };
 
     return publish(config);
