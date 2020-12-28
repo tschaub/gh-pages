@@ -387,3 +387,12 @@ Note that this plugin requires Git 1.9 or higher (because it uses the `--exit-co
 The `gh-pages` module writes temporary files to a `node_modules/.cache/gh-pages` directory.  The location of this directory can be customized by setting the `CACHE_DIR` environemnt variable.
 
 If `gh-pages` fails, you may find that you need to manually clean up the cache directory.  To remove the cache directory, run `node_modules/gh-pages/bin/gh-pages-clean` or remove `node_modules/.cache/gh-pages`.
+
+
+### when deploying to github pages with custom domain
+
+Modify the deployment line to your deploy script if you use custom domain. This will prevent deployment to remove the domain forom settings in github.
+
+```
+echo 'your_cutom_domain.online' > ./build/CNAME && gh-pages -d build"
+```
