@@ -393,15 +393,14 @@ If `gh-pages` fails, you may find that you need to manually clean up the cache d
 In order to deploy with Github Actions, you will need to define a user and set the git repository for the process. See the example step below
 
 ```
-    # REPLACE "tschaub/gh-pages" IN THE GIT URL BELOW WITH YOUR REPOSITORY'S INFORMATION
     - name: Deploy with gh-pages
       run: |
-        git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/tschaub/gh-pages.git
+        git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
         npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-The `secrets.GITHUB_TOKEN` is provided automatically as part of the Github Action and does not require any further configuration, but simply needs to be passed in as an environmental variable to the step.
+The `secrets.GITHUB_TOKEN` is provided automatically as part of the Github Action and does not require any further configuration, but simply needs to be passed in as an environmental variable to the step. `GITHUB_REPOSITORY` is the owner and repository name and is also passed in automatically, but does not need to be added to the `env` list.
 
 See [Issue #345](https://github.com/tschaub/gh-pages/issues/345) for more information
