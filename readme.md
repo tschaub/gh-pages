@@ -388,19 +388,42 @@ The `gh-pages` module writes temporary files to a `node_modules/.cache/gh-pages`
 
 If `gh-pages` fails, you may find that you need to manually clean up the cache directory.  To remove the cache directory, run `node_modules/gh-pages/bin/gh-pages-clean` or remove `node_modules/.cache/gh-pages`.
 
-### Deploying with Github Actions
+### Deploying with GitHub Actions
 
-In order to deploy with Github Actions, you will need to define a user and set the git repository for the process. See the example step below
+In order to deploy with GitHub Actions, you will need to define a user and set the git repository for the process. See the example step below
 
+```yaml
+- name: Deploy with gh-pages
+  run: |
+    git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+    npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
+   env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
-    - name: Deploy with gh-pages
-      run: |
-        git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-        npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
 
-The `secrets.GITHUB_TOKEN` is provided automatically as part of the Github Action and does not require any further configuration, but simply needs to be passed in as an environmental variable to the step. `GITHUB_REPOSITORY` is the owner and repository name and is also passed in automatically, but does not need to be added to the `env` list.
+The `secrets.GITHUB_TOKEN` is provided automatically as part of the GitHub Action and does not require any further configuration, but simply needs to be passed in as an environmental variable to the step. `GITHUB_REPOSITORY` is the owner and repository name and is also passed in automatically, but does not need to be added to the `env` list.
 
 See [Issue #345](https://github.com/tschaub/gh-pages/issues/345) for more information
+
+#### Deploying with GitHub Actions and a named script
+
+If you are using a named script in the `package.json` file to deploy, you will need to ensure you pass the variables properly to the wrapped `gh-pages` script. Given the `package.json` script below:
+
+```json
+"scripts": {
+  "deploy": "gh-pages -d build"
+}
+```
+
+You will need to utilize the `--` option to pass any additional arguments:
+
+```yaml
+- name: Deploy with gh-pages
+  run: |
+    git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+    npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+See [Pull Request #368](https://github.com/tschaub/gh-pages/pull/368) for more information.
