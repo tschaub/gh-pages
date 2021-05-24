@@ -390,7 +390,7 @@ If `gh-pages` fails, you may find that you need to manually clean up the cache d
 
 ### Deploying to github pages with custom domain
 
-Modify the deployment line to your deploy script if you use custom domain. This will prevent deployment to remove the domain forom settings in github.
+Modify the deployment line to your deploy script if you use custom domain. This will prevent the deployment from removing the domain settings in GitHub.
 
 ```
 echo 'your_cutom_domain.online' > ./build/CNAME && gh-pages -d build"
@@ -435,4 +435,3 @@ You will need to utilize the `--` option to pass any additional arguments:
 ```
 
 See [Pull Request #368](https://github.com/tschaub/gh-pages/pull/368) for more information.
-
