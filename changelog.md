@@ -1,3 +1,15 @@
+## v3.2.0
+
+This release updates a few development dependencies and adds a bit of documentation.
+
+ * [#391](https://github.com/tschaub/gh-pages/pull/391) - Update dev dependencies ([@tschaub](https://github.com/tschaub))
+ * [#375](https://github.com/tschaub/gh-pages/pull/375) - Add note about domain problem ([@demee](https://github.com/demee))
+ * [#390](https://github.com/tschaub/gh-pages/pull/390) - Fix little typo in the README ([@cizordj](https://github.com/cizordj))
+ * [#388](https://github.com/tschaub/gh-pages/pull/388) - Bump hosted-git-info from 2.8.8 to 2.8.9 ([@tschaub](https://github.com/tschaub))
+ * [#387](https://github.com/tschaub/gh-pages/pull/387) - Bump y18n from 4.0.0 to 4.0.3 ([@tschaub](https://github.com/tschaub))
+ * [#378](https://github.com/tschaub/gh-pages/pull/378) - Add GitHub Actions tips to readme.md ([@mickelsonmichael](https://github.com/mickelsonmichael))
+ * [#386](https://github.com/tschaub/gh-pages/pull/386) - Bump lodash from 4.17.14 to 4.17.21 ([@tschaub](https://github.com/tschaub))
+
 ## v3.1.0
 
 The cache directory used by `gh-pages` is now `node_modules/.cache/gh-pages`.  If you want to use a different location, set the `CACHE_DIR` environment variable.
