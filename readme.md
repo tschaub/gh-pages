@@ -388,6 +388,14 @@ The `gh-pages` module writes temporary files to a `node_modules/.cache/gh-pages`
 
 If `gh-pages` fails, you may find that you need to manually clean up the cache directory.  To remove the cache directory, run `node_modules/gh-pages/bin/gh-pages-clean` or remove `node_modules/.cache/gh-pages`.
 
+### Deploying to github pages with custom domain
+
+Modify the deployment line to your deploy script if you use custom domain. This will prevent the deployment from removing the domain settings in GitHub.
+
+```
+echo 'your_cutom_domain.online' > ./build/CNAME && gh-pages -d build"
+```
+
 ### Deploying with GitHub Actions
 
 In order to deploy with GitHub Actions, you will need to define a user and set the git repository for the process. See the example step below
