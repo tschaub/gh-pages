@@ -1,3 +1,7 @@
+## v3.2.1
+
+ * [#393](https://github.com/tschaub/gh-pages/pull/393) - security(deps): bump filenamify-url to 2.1.1 ([@AviVahl](https://github.com/AviVahl))
+
 ## v3.2.0
 
 This release updates a few development dependencies and adds a bit of documentation.
