@@ -1,3 +1,7 @@
+## v3.2.2
+
+ * [#396](https://github.com/tschaub/gh-pages/pull/396) - Revert "security(deps): bump filenamify-url to 2.1.1" ([@tschaub](https://github.com/tschaub))
+
 ## v3.2.1
 
  * [#393](https://github.com/tschaub/gh-pages/pull/393) - security(deps): bump filenamify-url to 2.1.1 ([@AviVahl](https://github.com/AviVahl))
