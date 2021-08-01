@@ -60,6 +60,10 @@ function main(args) {
         'The name and email of the user (defaults to the git config).  Format is "Your Name <email@example.com>".'
       )
       .option(
+        '--signingkey <signingkey>',
+        'The signing key for signing the commits (defaults to the git config).'
+      )
+      .option(
         '-v, --remove <pattern>',
         'Remove files that match the given pattern ' +
           '(ignored if used together with --add).',
@@ -122,6 +126,7 @@ function main(args) {
       push: !!program.push,
       history: !!program.history,
       user: user,
+      signingkey: program.signingkey,
       beforeAdd: beforeAdd
     };
 

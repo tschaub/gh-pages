@@ -216,7 +216,7 @@ ghpages.publish('dist', {
  * type: `Object`
  * default: `null`
 
-If you are running the `gh-pages` task in a repository without a `user.name` or `user.email` git config properties (or on a machine without these global config properties), you must provide user info before git allows you to commit.  The `options.user` object accepts `name` and `email` string values to identify the committer.
+If you are running the `gh-pages` task in a repository without a `user.name`, `user.email` or `user.signingkey` git config properties (or on a machine without these global config properties), you must provide user info before git allows you to commit.  The `options.user` object accepts `name`, `email` and `signingkey` string values to identify the committer.
 
 Example use of the `user` option:
 
@@ -224,7 +224,8 @@ Example use of the `user` option:
 ghpages.publish('dist', {
   user: {
     name: 'Joe Code',
-    email: 'coder@example.com'
+    email: 'coder@example.com',
+    signingkey: 'D29XXXXXXXXXXXXX'
   }
 }, callback);
 ```
