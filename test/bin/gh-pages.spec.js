@@ -1,8 +1,8 @@
-const ghpages = require('../../lib/index');
+const ghpages = require('../../lib/index.js');
 const sinon = require('sinon');
-const cli = require('../../bin/gh-pages');
-const assert = require('../helper').assert;
-const beforeAdd = require('./fixtures/beforeAdd');
+const cli = require('../../bin/gh-pages.js');
+const {assert} = require('../helper.js');
+const beforeAdd = require('./fixtures/beforeAdd.js');
 
 describe('gh-pages', () => {
   describe('main', () => {

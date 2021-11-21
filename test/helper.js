@@ -2,8 +2,8 @@ const chai = require('chai');
 const tmp = require('tmp');
 const path = require('path');
 const fs = require('fs-extra');
-const Git = require('../lib/git');
-const compare = require('dir-compare').compareSync;
+const Git = require('../lib/git.js');
+const {compareSync: compare} = require('dir-compare');
 
 /**
  * Turn off maxListeners warning during the tests

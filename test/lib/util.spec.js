@@ -1,7 +1,7 @@
 const path = require('path');
-const assert = require('../helper').assert;
-const util = require('../../lib/util');
-const helper = require('../helper');
+const {assert} = require('../helper.js');
+const util = require('../../lib/util.js');
+const helper = require('../helper.js');
 
 describe('util', () => {
   let files;

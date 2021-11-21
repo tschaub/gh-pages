@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const ghpages = require('../lib/index');
+const ghpages = require('../lib/index.js');
 
 function main() {
   ghpages.clean();
