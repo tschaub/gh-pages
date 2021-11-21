@@ -1,5 +1,5 @@
-const helper = require('../helper');
-const ghPages = require('../../lib/');
+const helper = require('../helper.js');
+const ghPages = require('../../lib/index.js');
 const path = require('path');
 
 const fixtures = path.join(__dirname, 'fixtures');
