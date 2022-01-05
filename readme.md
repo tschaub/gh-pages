@@ -393,7 +393,7 @@ If `gh-pages` fails, you may find that you need to manually clean up the cache d
 Modify the deployment line to your deploy script if you use custom domain. This will prevent the deployment from removing the domain settings in GitHub.
 
 ```
-echo 'your_cutom_domain.online' > ./build/CNAME && gh-pages -d build"
+echo 'your_cutom_domain.online' > ./build/CNAME && gh-pages -d build
 ```
 
 ### Deploying with GitHub Actions
