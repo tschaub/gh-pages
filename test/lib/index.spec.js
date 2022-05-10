@@ -1,6 +1,6 @@
 const path = require('path');
-const assert = require('../helper').assert;
-const index = require('../../lib/index');
+const assert = require('../helper.js').assert;
+const index = require('../../lib/index.js');
 
 describe('index', () => {
   describe('getCacheDir()', () => {
