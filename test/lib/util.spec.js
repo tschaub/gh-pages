@@ -1,7 +1,7 @@
 const path = require('path');
-const assert = require('../helper').assert;
-const util = require('../../lib/util');
-const helper = require('../helper');
+const assert = require('../helper.js').assert;
+const util = require('../../lib/util.js');
+const helper = require('../helper.js');
 
 describe('util', () => {
   let files;
@@ -18,7 +18,7 @@ describe('util', () => {
       path.join('a1', 'b2', 'c1', 'd1.txt'),
       path.join('a1.txt'),
       path.join('a2', 'b1', 'c1.txt'),
-      path.join('a2', 'b1.txt')
+      path.join('a2', 'b1.txt'),
     ].slice();
   });
 
@@ -38,7 +38,7 @@ describe('util', () => {
         path.join('a1', 'b1', 'c2', 'd2.txt'),
         path.join('a1', 'b1', 'c2', 'd3.txt'),
         path.join('a1', 'b2', 'c1', 'd1.txt'),
-        path.join('a1', 'b2', 'c2', 'd1.txt')
+        path.join('a1', 'b2', 'c2', 'd1.txt'),
       ];
 
       assert.deepEqual(files, expected);
@@ -60,14 +60,14 @@ describe('util', () => {
         path.join('a1', 'b2'),
         path.join('a1', 'b2', 'c1'),
         path.join('a1', 'b2', 'c2'),
-        path.join('a2', 'b1')
+        path.join('a2', 'b1'),
       ].sort();
 
       assert.deepEqual(got, expected);
     });
 
     it('gets a list of unique directories on absolute paths', () => {
-      const absoluteFiles = files.map(path => {
+      const absoluteFiles = files.map((path) => {
         return '/' + path;
       });
       // not comparing order here, so we sort both
@@ -83,7 +83,7 @@ describe('util', () => {
         path.join('/a1', 'b2'),
         path.join('/a1', 'b2', 'c1'),
         path.join('/a1', 'b2', 'c2'),
-        path.join('/a2', 'b1')
+        path.join('/a2', 'b1'),
       ].sort();
 
       assert.deepEqual(got, expected);
@@ -104,7 +104,7 @@ describe('util', () => {
         path.join('a1', 'b1', 'c1'),
         path.join('a1', 'b1', 'c2'),
         path.join('a1', 'b2', 'c1'),
-        path.join('a1', 'b2', 'c2')
+        path.join('a1', 'b2', 'c2'),
       ];
 
       assert.deepEqual(got, expected);
@@ -112,14 +112,14 @@ describe('util', () => {
   });
 
   describe('getUser', () => {
-    it('gets the locally configured user', done => {
+    it('gets the locally configured user', (done) => {
       const name = 'Full Name';
       const email = 'email@example.com';
 
-      helper.setupRepo('basic', {user: {name, email}}).then(dir => {
+      helper.setupRepo('basic', {user: {name, email}}).then((dir) => {
         util
           .getUser(dir)
-          .then(user => {
+          .then((user) => {
             assert.equal(user.name, name);
             assert.equal(user.email, email);
             done();

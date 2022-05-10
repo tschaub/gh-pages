@@ -43,12 +43,12 @@
     "globby": "^6.1.0"
   },
   "devDependencies": {
-    "chai": "^4.3.4",
+    "chai": "^4.3.6",
     "dir-compare": "^1.8.0",
-    "eslint": "^7.27.0",
-    "eslint-config-tschaub": "^13.1.0",
-    "mocha": "^8.4.0",
-    "sinon": "^10.0.0",
+    "eslint": "^8.15.0",
+    "eslint-config-tschaub": "^14.0.0",
+    "mocha": "^10.0.0",
+    "sinon": "^14.0.0",
     "tmp": "^0.2.1"
   },
   "bin": {
@@ -56,6 +56,9 @@
     "gh-pages-clean": "bin/gh-pages-clean.js"
   },
   "eslintConfig": {
-    "extends": "tschaub"
+    "extends": "tschaub",
+    "rules": {
+      "jsdoc/check-examples": "off"
+    }
   }
 }

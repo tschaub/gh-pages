@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const ghpages = require('../lib/index');
+const ghpages = require('../lib/index.js');
 const program = require('commander');
 const path = require('path');
 const pkg = require('../package.json');
@@ -9,7 +9,7 @@ const addr = require('email-addresses');
 function publish(config) {
   return new Promise((resolve, reject) => {
     const basePath = path.resolve(process.cwd(), program.dist);
-    ghpages.publish(basePath, config, err => {
+    ghpages.publish(basePath, config, (err) => {
       if (err) {
         return reject(err);
       }
@@ -90,7 +90,7 @@ function main(args) {
     let beforeAdd;
     if (program.beforeAdd) {
       const m = require(require.resolve(program.beforeAdd, {
-        paths: [process.cwd()]
+        paths: [process.cwd()],
       }));
 
       if (typeof m === 'function') {
@@ -122,7 +122,7 @@ function main(args) {
       push: !!program.push,
       history: !!program.history,
       user: user,
-      beforeAdd: beforeAdd
+      beforeAdd: beforeAdd,
     };
 
     return publish(config);
@@ -134,9 +134,10 @@ if (require.main === module) {
     .then(() => {
       process.stdout.write('Published\n');
     })
-    .catch(err => {
+    .catch((err) => {
       process.stderr.write(`${err.message}\n`, () => process.exit(1));
     });
 }
 
-exports = module.exports = main;
+module.exports = main;
+exports = module.exports;

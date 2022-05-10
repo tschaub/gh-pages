@@ -1,8 +1,8 @@
-const ghpages = require('../../lib/index');
+const ghpages = require('../../lib/index.js');
 const sinon = require('sinon');
-const cli = require('../../bin/gh-pages');
-const assert = require('../helper').assert;
-const beforeAdd = require('./fixtures/beforeAdd');
+const cli = require('../../bin/gh-pages.js');
+const assert = require('../helper.js').assert;
+const beforeAdd = require('./fixtures/beforeAdd.js');
 
 describe('gh-pages', () => {
   describe('main', () => {
@@ -20,74 +20,74 @@ describe('gh-pages', () => {
       {
         args: ['--dist', 'lib'],
         dist: 'lib',
-        config: ghpages.defaults
+        config: ghpages.defaults,
       },
       {
         args: ['--dist', 'lib', '-n'],
         dist: 'lib',
-        config: {push: false}
+        config: {push: false},
       },
       {
         args: ['--dist', 'lib', '-f'],
         dist: 'lib',
-        config: {history: false}
+        config: {history: false},
       },
       {
         args: ['--dist', 'lib', '-x'],
         dist: 'lib',
-        config: {silent: true}
+        config: {silent: true},
       },
       {
         args: ['--dist', 'lib', '--dotfiles'],
         dist: 'lib',
-        config: {dotfiles: true}
+        config: {dotfiles: true},
       },
       {
         args: ['--dist', 'lib', '--dest', 'target'],
         dist: 'lib',
-        config: {dest: 'target'}
+        config: {dest: 'target'},
       },
       {
         args: ['--dist', 'lib', '-a', 'target'],
         dist: 'lib',
-        config: {add: true}
+        config: {add: true},
       },
       {
         args: ['--dist', 'lib', '--git', 'path/to/git'],
         dist: 'lib',
-        config: {git: 'path/to/git'}
+        config: {git: 'path/to/git'},
       },
       {
         args: ['--dist', 'lib', '--user', 'Full Name <email@example.com>'],
         dist: 'lib',
-        config: {user: {name: 'Full Name', email: 'email@example.com'}}
+        config: {user: {name: 'Full Name', email: 'email@example.com'}},
       },
       {
         args: ['--dist', 'lib', '--user', 'email@example.com'],
         dist: 'lib',
-        config: {user: {name: null, email: 'email@example.com'}}
+        config: {user: {name: null, email: 'email@example.com'}},
       },
       {
         args: ['--dist', 'lib', '-u', 'Full Name <email@example.com>'],
         dist: 'lib',
-        config: {user: {name: 'Full Name', email: 'email@example.com'}}
+        config: {user: {name: 'Full Name', email: 'email@example.com'}},
       },
       {
         args: [
           '--dist',
           'lib',
           '--before-add',
-          require.resolve('./fixtures/beforeAdd')
+          require.resolve('./fixtures/beforeAdd'),
         ],
         dist: 'lib',
-        config: {beforeAdd}
+        config: {beforeAdd},
       },
       {
         args: ['--dist', 'lib', '-u', 'junk email'],
         dist: 'lib',
         error:
-          'Could not parse name and email from user option "junk email" (format should be "Your Name <email@example.com>")'
-      }
+          'Could not parse name and email from user option "junk email" (format should be "Your Name <email@example.com>")',
+      },
     ];
 
     scenarios.forEach(({args, dist, config, error}) => {
@@ -95,7 +95,7 @@ describe('gh-pages', () => {
       if (error) {
         title += ' (user error)';
       }
-      it(title, done => {
+      it(title, (done) => {
         cli(['node', 'gh-pages'].concat(args))
           .then(() => {
             if (error) {
@@ -105,7 +105,7 @@ describe('gh-pages', () => {
             sinon.assert.calledWithMatch(ghpages.publish, dist, config);
             done();
           })
-          .catch(err => {
+          .catch((err) => {
             if (!error) {
               done(err);
               return;
