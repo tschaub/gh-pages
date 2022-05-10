@@ -9,7 +9,7 @@ Publish files to a `gh-pages` branch on GitHub (or any other branch anywhere els
 npm install gh-pages --save-dev
 ```
 
-This module requires Git `>=1.9`.
+This module requires Git >= 1.9 and Node >= 12.
 
 ## Basic Usage
 
