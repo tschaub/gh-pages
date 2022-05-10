@@ -1,3 +1,14 @@
+## v4.0.0
+
+This release doesn't include any breaking changes, but due to updated development dependencies, tests are no longer run on Node 10.
+
+ * [#432](https://github.com/tschaub/gh-pages/pull/432) - Updated dev dependencies and formatting ([@tschaub](https://github.com/tschaub))
+ * [#430](https://github.com/tschaub/gh-pages/pull/430) - Bump ansi-regex from 3.0.0 to 3.0.1 ([@tschaub](https://github.com/tschaub))
+ * [#431](https://github.com/tschaub/gh-pages/pull/431) - Bump path-parse from 1.0.6 to 1.0.7 ([@tschaub](https://github.com/tschaub))
+ * [#427](https://github.com/tschaub/gh-pages/pull/427) - Bump async from 2.6.1 to 2.6.4 ([@tschaub](https://github.com/tschaub))
+ * [#423](https://github.com/tschaub/gh-pages/pull/423) - Bump minimist from 1.2.5 to 1.2.6 ([@tschaub](https://github.com/tschaub))
+
+
 ## v3.2.3
 
  * [#398](https://github.com/tschaub/gh-pages/pull/398) - Update glob-parent ([@tschaub](https://github.com/tschaub))
