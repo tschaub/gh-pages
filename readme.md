@@ -355,6 +355,18 @@ And then to publish everything from your `dist` folder to your `gh-pages` branch
 npm run deploy
 ```
 
+## GitHub Pages Project Sites
+
+There are three types of GitHub Pages sites: [project, user, and organization](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#types-of-github-pages-sites). Since project sites are not hosted on the root `<user|org>.github.io` domain and instead under a URL path based on the repository name, they often require configuration tweaks for various build tools and frameworks. If not configured properly, a browser will usually log `net::ERR_ABORTED 404` errors when looking for compiled assets.
+
+Examples:
+- Create React App (which uses webpack under the hood) [requires the user to set a `"homepage"` property in their `package.json` so that built assets are referenced correctly in the final compiled HTML](https://create-react-app.dev/docs/deployment/#building-for-relative-paths).
+  - This [has been often been thought of as an issue with `gh-pages`](https://github.com/tschaub/gh-pages/issues/285#issuecomment-805321474), though this package isn't able to control a project's build configuration.
+- Vite [requires a `"base"` property in its `vite.config.js`](https://vitejs.dev/guide/static-deploy.html#github-pages)
+- Next.js does not support deploying to GitHub Pages [because of an opinionated static export approach that puts all assets under a `_next` direcotry that GitHub Pages ignores](https://github.com/vercel/next.js/issues/9460).
+
+When using a project site, be sure to read the documentation for your particular build tool or framework to learn how to configure correct asset paths.
+
 ## Debugging
 
 To get additional output from the `gh-pages` script, set `NODE_DEBUG=gh-pages`.  For example:
