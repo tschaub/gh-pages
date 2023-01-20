@@ -37,7 +37,7 @@
     "async": "^2.6.1",
     "commander": "^2.18.0",
     "email-addresses": "^5.0.0",
-    "filenamify": "^4.3.0",
+    "filenamify": "^5.1.1",
     "find-cache-dir": "^3.3.1",
     "fs-extra": "^8.1.0",
     "globby": "^6.1.0"
