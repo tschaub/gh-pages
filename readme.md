@@ -64,14 +64,14 @@ ghpages.publish('dist', callback);
 
 ### Options
 
-The default options work for simple cases.  The options described below let you push to alternate branches, customize your commit messages, and more.
+The default options work for simple cases.  The options described below let you push to alternate branches, customize your commit messages and more.
 
 
 #### <a id="optionssrc">options.src</a>
  * type: `string|Array<string>`
  * default: `'**/*'`
 
-The [minimatch](https://github.com/isaacs/minimatch) pattern or array of patterns used to select which files should be published.
+The [minimatch](https://github.com/isaacs/minimatch) pattern or array of patterns is used to select which files should be published.
 
 
 #### <a id="optionsbranch">options.branch</a>
