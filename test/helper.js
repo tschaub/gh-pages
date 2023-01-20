@@ -36,7 +36,7 @@ function mkdtemp() {
 /**
  * Creates a git repo with the contents of a fixture.
  * @param {string} fixtureName Name of fixture.
- * @param {Object} options Repo options.
+ * @param {object} options Repo options.
  * @return {Promise<string>} A promise for the path to the repo.
  */
 function setupRepo(fixtureName, options) {
@@ -60,7 +60,7 @@ function setupRepo(fixtureName, options) {
 /**
  * Creates a git repo with the contents of a fixture and pushes to a remote.
  * @param {string} fixtureName Name of the fixture.
- * @param {Object} options Repo options.
+ * @param {object} options Repo options.
  * @return {Promise} A promise.
  */
 function setupRemote(fixtureName, options) {
