@@ -1,3 +1,17 @@
+## v5.0.0
+
+Potentially breaking change: the `publish` method now always returns a promise.  Previously, it did not return a promise in some error cases.  This should not impact most users.
+
+Updates to the development dependencies required a minimum Node version of 14 for the tests.  The library should still work on Node 12, but tests are no longer run in CI for version 12.  A future major version of the library may drop support for version 12 altogether.
+
+ * [#438](https://github.com/tschaub/gh-pages/pull/438) - Remove quotation marks ([@Vicropht](https://github.com/Vicropht))
+ * [#459](https://github.com/tschaub/gh-pages/pull/459) - Bump async from 2.6.4 to 3.2.4 ([@tschaub](https://github.com/tschaub))
+ * [#454](https://github.com/tschaub/gh-pages/pull/454) - Bump email-addresses from 3.0.1 to 5.0.0 ([@tschaub](https://github.com/tschaub))
+ * [#455](https://github.com/tschaub/gh-pages/pull/455) - Bump actions/setup-node from 1 to 3 ([@tschaub](https://github.com/tschaub))
+ * [#453](https://github.com/tschaub/gh-pages/pull/453) - Bump actions/checkout from 2 to 3 ([@tschaub](https://github.com/tschaub))
+ * [#445](https://github.com/tschaub/gh-pages/pull/445) - Update README to clarify project site configuration requirements with tools like CRA, webpack, Vite, etc. ([@Nezteb](https://github.com/Nezteb))
+ * [#452](https://github.com/tschaub/gh-pages/pull/452) - Assorted updates ([@tschaub](https://github.com/tschaub))
+
 ## v4.0.0
 
 This release doesn't include any breaking changes, but due to updated development dependencies, tests are no longer run on Node 10.
