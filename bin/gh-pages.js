@@ -48,6 +48,7 @@ function main(args) {
       .option('-g, --tag <tag>', 'add tag to commit')
       .option('--git <git>', 'Path to git executable', ghpages.defaults.git)
       .option('-t, --dotfiles', 'Include dotfiles')
+      .option('-c, --cname <cname>', 'Include domain for CNAME file')
       .option('-r, --repo <repo>', 'URL of the repository you are pushing to')
       .option('-p, --depth <depth>', 'depth for clone', ghpages.defaults.depth)
       .option(
@@ -116,6 +117,7 @@ function main(args) {
       git: program.git,
       depth: program.depth,
       dotfiles: !!program.dotfiles,
+      cname: program.cname,
       add: !!program.add,
       remove: program.remove,
       remote: program.remote,
