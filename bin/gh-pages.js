@@ -50,7 +50,7 @@ function main(args) {
       .option('-t, --dotfiles', 'Include dotfiles')
       .option(
         '-j, --nojekyll',
-        'Disable jekyll SSG engine by include a .nojekyll file'
+        'Disable jekyll SSG engine by including a .nojekyll file'
       )
       .option('-r, --repo <repo>', 'URL of the repository you are pushing to')
       .option('-p, --depth <depth>', 'depth for clone', ghpages.defaults.depth)
