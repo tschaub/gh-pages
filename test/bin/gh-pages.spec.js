@@ -43,6 +43,11 @@ describe('gh-pages', () => {
         config: {dotfiles: true},
       },
       {
+        args: ['--dist', 'lib', '--cname', 'cool.domain'],
+        dist: 'lib',
+        config: {cname: 'cool.domain'},
+      },
+      {
         args: ['--dist', 'lib', '--dest', 'target'],
         dist: 'lib',
         config: {dest: 'target'},
