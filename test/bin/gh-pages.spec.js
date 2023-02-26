@@ -48,6 +48,11 @@ describe('gh-pages', () => {
         config: {cname: 'cool.domain'},
       },
       {
+        args: ['--dist', 'lib', '--nojekyll'],
+        dist: 'lib',
+        config: {nojekyll: true},
+      },
+      {
         args: ['--dist', 'lib', '--dest', 'target'],
         dist: 'lib',
         config: {dest: 'target'},

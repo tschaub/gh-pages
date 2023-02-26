@@ -49,6 +49,10 @@ function main(args) {
       .option('--git <git>', 'Path to git executable', ghpages.defaults.git)
       .option('-t, --dotfiles', 'Include dotfiles')
       .option('-c, --cname <cname>', 'Include domain for CNAME file')
+      .option(
+        '-j, --nojekyll',
+        'Disable jekyll SSG engine by including a .nojekyll file'
+      )
       .option('-r, --repo <repo>', 'URL of the repository you are pushing to')
       .option('-p, --depth <depth>', 'depth for clone', ghpages.defaults.depth)
       .option(
@@ -118,6 +122,7 @@ function main(args) {
       depth: program.depth,
       dotfiles: !!program.dotfiles,
       cname: program.cname,
+      nojekyll: !!program.nojekyll,
       add: !!program.add,
       remove: program.remove,
       remote: program.remote,
