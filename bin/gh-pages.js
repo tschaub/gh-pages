@@ -48,6 +48,7 @@ function main(args) {
       .option('-g, --tag <tag>', 'add tag to commit')
       .option('--git <git>', 'Path to git executable', ghpages.defaults.git)
       .option('-t, --dotfiles', 'Include dotfiles')
+      .option('-c, --cname <cname>', 'Include domain for CNAME file')
       .option(
         '-j, --nojekyll',
         'Disable jekyll SSG engine by including a .nojekyll file'
@@ -120,6 +121,7 @@ function main(args) {
       git: program.git,
       depth: program.depth,
       dotfiles: !!program.dotfiles,
+      cname: program.cname,
       nojekyll: !!program.nojekyll,
       add: !!program.add,
       remove: program.remove,
