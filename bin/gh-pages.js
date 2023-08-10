@@ -1,13 +1,20 @@
 #!/usr/bin/env node
 
 const ghpages = require('../lib/index.js');
-const program = require('commander');
+const {Command} = require('commander');
 const path = require('path');
 const pkg = require('../package.json');
 const addr = require('email-addresses');
 
-function publish(config) {
+function publish(program, config) {
   return new Promise((resolve, reject) => {
+    if (program.dist === undefined) {
+      return reject(
+        new Error(
+          'No base directory specified. The `--dist` option must be specified.'
+        )
+      );
+    }
     const basePath = path.resolve(process.cwd(), program.dist);
     ghpages.publish(basePath, config, (err) => {
       if (err) {
@@ -20,7 +27,7 @@ function publish(config) {
 
 function main(args) {
   return Promise.resolve().then(() => {
-    program
+    const program = new Command()
       .version(pkg.version)
       .option('-d, --dist <dist>', 'Base directory for all source files')
       .option(
@@ -125,7 +132,7 @@ function main(args) {
       beforeAdd: beforeAdd,
     };
 
-    return publish(config);
+    return publish(program, config);
   });
 }
 
