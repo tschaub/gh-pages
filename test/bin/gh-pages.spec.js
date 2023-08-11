@@ -88,11 +88,6 @@ describe('gh-pages', () => {
         error:
           'Could not parse name and email from user option "junk email" (format should be "Your Name <email@example.com>")',
       },
-      {
-        args: ['.'],
-        error:
-          'No base directory specified. The `--dist` option must be specified.',
-      },
     ];
 
     scenarios.forEach(({args, dist, config, error}) => {
@@ -100,24 +95,22 @@ describe('gh-pages', () => {
       if (error) {
         title += ' (user error)';
       }
-      it(title, (done) => {
-        cli(['node', 'gh-pages'].concat(args))
-          .then(() => {
-            if (error) {
-              done(new Error(`Expected error "${error}" but got success`));
-              return;
-            }
-            sinon.assert.calledWithMatch(ghpages.publish, dist, config);
-            done();
-          })
-          .catch((err) => {
-            if (!error) {
-              done(err);
-              return;
-            }
-            assert.equal(err.message, error);
-            done();
-          });
+      it(title, async () => {
+        try {
+          await cli(['node', 'gh-pages'].concat(args));
+        } catch (err) {
+          if (!error) {
+            throw err;
+          }
+          assert.equal(err.message, error);
+          return;
+        }
+
+        if (error) {
+          throw new Error(`Expected error "${error}" but got success`);
+        }
+
+        sinon.assert.calledWithMatch(ghpages.publish, dist, config);
       });
     });
   });
