@@ -6,16 +6,9 @@ const path = require('path');
 const pkg = require('../package.json');
 const addr = require('email-addresses');
 
-function publish(program, config) {
+function publish(dist, config) {
   return new Promise((resolve, reject) => {
-    if (program.dist === undefined) {
-      return reject(
-        new Error(
-          'No base directory specified. The `--dist` option must be specified.'
-        )
-      );
-    }
-    const basePath = path.resolve(process.cwd(), program.dist);
+    const basePath = path.resolve(process.cwd(), dist);
     ghpages.publish(basePath, config, (err) => {
       if (err) {
         return reject(err);
@@ -29,7 +22,10 @@ function main(args) {
   return Promise.resolve().then(() => {
     const program = new Command()
       .version(pkg.version)
-      .option('-d, --dist <dist>', 'Base directory for all source files')
+      .requiredOption(
+        '-d, --dist <dist>',
+        'Base directory for all source files'
+      )
       .option(
         '-s, --src <src>',
         'Pattern used to select which files to publish',
@@ -83,20 +79,22 @@ function main(args) {
       )
       .parse(args);
 
+    const options = program.opts();
+
     let user;
-    if (program.user) {
-      const parts = addr.parseOneAddress(program.user);
+    if (options.user) {
+      const parts = addr.parseOneAddress(options.user);
       if (!parts) {
         throw new Error(
-          `Could not parse name and email from user option "${program.user}" ` +
+          `Could not parse name and email from user option "${options.user}" ` +
             '(format should be "Your Name <email@example.com>")'
         );
       }
       user = {name: parts.name, email: parts.address};
     }
     let beforeAdd;
-    if (program.beforeAdd) {
-      const m = require(require.resolve(program.beforeAdd, {
+    if (options.beforeAdd) {
+      const m = require(require.resolve(options.beforeAdd, {
         paths: [process.cwd()],
       }));
 
@@ -107,32 +105,32 @@ function main(args) {
       } else {
         throw new Error(
           `Could not find function to execute before adding files in ` +
-            `"${program.beforeAdd}".\n `
+            `"${options.beforeAdd}".\n `
         );
       }
     }
 
     const config = {
-      repo: program.repo,
-      silent: !!program.silent,
-      branch: program.branch,
-      src: program.src,
-      dest: program.dest,
-      message: program.message,
-      tag: program.tag,
-      git: program.git,
-      depth: program.depth,
-      dotfiles: !!program.dotfiles,
-      add: !!program.add,
-      remove: program.remove,
-      remote: program.remote,
-      push: !!program.push,
-      history: !!program.history,
+      repo: options.repo,
+      silent: !!options.silent,
+      branch: options.branch,
+      src: options.src,
+      dest: options.dest,
+      message: options.message,
+      tag: options.tag,
+      git: options.git,
+      depth: options.depth,
+      dotfiles: !!options.dotfiles,
+      add: !!options.add,
+      remove: options.remove,
+      remote: options.remote,
+      push: !!options.push,
+      history: !!options.history,
       user: user,
       beforeAdd: beforeAdd,
     };
 
-    return publish(program, config);
+    return publish(options.dist, config);
   });
 }
 
@@ -142,7 +140,7 @@ if (require.main === module) {
       process.stdout.write('Published\n');
     })
     .catch((err) => {
-      process.stderr.write(`${err.message}\n`, () => process.exit(1));
+      process.stderr.write(`${err.stack}\n`, () => process.exit(1));
     });
 }
 
