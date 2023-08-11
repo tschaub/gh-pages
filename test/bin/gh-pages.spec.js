@@ -88,6 +88,11 @@ describe('gh-pages', () => {
         error:
           'Could not parse name and email from user option "junk email" (format should be "Your Name <email@example.com>")',
       },
+      {
+        args: ['.'],
+        error:
+          'No base directory specified. The `--dist` option must be specified.',
+      },
     ];
 
     scenarios.forEach(({args, dist, config, error}) => {
