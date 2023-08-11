@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "async": "^3.2.4",
-    "commander": "^2.18.0",
+    "commander": "^11.0.0",
     "email-addresses": "^5.0.0",
     "filenamify": "^4.3.0",
     "find-cache-dir": "^3.3.1",
