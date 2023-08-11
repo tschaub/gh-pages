@@ -22,9 +22,9 @@ jobs:
         os:
           - ubuntu-latest
         node:
-          - 14
           - 16
           - 18
+          - 20
 
     steps:
       - name: Clone repository
