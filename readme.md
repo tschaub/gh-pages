@@ -383,7 +383,7 @@ Note that this plugin requires Git 1.9 or higher (because it uses the `--exit-co
 
 ## Tips
 
-### when get error `branch already exists`
+### Fixing `branch already exists` errors
 ```
 { ProcessError: fatal: A branch named 'gh-pages' already exists.
 
@@ -400,13 +400,23 @@ The `gh-pages` module writes temporary files to a `node_modules/.cache/gh-pages`
 
 If `gh-pages` fails, you may find that you need to manually clean up the cache directory.  To remove the cache directory, run `node_modules/gh-pages/bin/gh-pages-clean` or remove `node_modules/.cache/gh-pages`.
 
-### Deploying to github pages with custom domain
+### Deploying to GitHub Pages with a custom domain
 
-Modify the deployment line to your deploy script if you use custom domain. This will prevent the deployment from removing the domain settings in GitHub.
+To use a custom domain, a CNAME file must be committed to the root of the branch (`gh-pages` by default) that contains your GitHub Pages content.
+The CNAME file should have only one line: the hostname of your site's custom domain like `foo.helloworld.com`.
+When you use your repo's Settings page in GitHub to set a custom domain, behind the scenes it is creating and committing a CNAME file to your current GitHub Pages branch.
+
+Because `gh-pages` by default (unless the `add` and/or `remove` options are used) will remove the existing CNAME file, a CNAME file must be included in the build folder that is deployed every time `gh-pages` runs.
+There are two ways to do this:
+
+One way is to change your deplopymenet script to add a CNAME file to your build folder before running `gh-pages`.
 
 ```
 echo your_cutom_domain.online > ./build/CNAME && gh-pages -d build"
 ```
+
+The other way is to commit a CNAME file in a location where your build pipeline will copy that file into your build folder before it's deployed.
+For example, if you use `gh-pages` for React app deployment then you can put put a CNAME file into your `public` folder.
 
 ### Deploying with GitHub Actions
 
