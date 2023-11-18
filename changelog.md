@@ -1,3 +1,19 @@
+## v6.1.0
+
+This release adds support for `--nojekyll` and `--cname` options.
+
+ * [#531](https://github.com/tschaub/gh-pages/pull/531) - Bump sinon from 15.2.0 to 17.0.1 ([@tschaub](https://github.com/tschaub))
+ * [#529](https://github.com/tschaub/gh-pages/pull/529) - Bump async from 3.2.4 to 3.2.5 ([@tschaub](https://github.com/tschaub))
+ * [#524](https://github.com/tschaub/gh-pages/pull/524) - Bump commander from 11.0.0 to 11.1.0 ([@tschaub](https://github.com/tschaub))
+ * [#530](https://github.com/tschaub/gh-pages/pull/530) - Bump eslint from 8.49.0 to 8.53.0 ([@tschaub](https://github.com/tschaub))
+ * [#520](https://github.com/tschaub/gh-pages/pull/520) - Bump chai from 4.3.8 to 4.3.10 ([@tschaub](https://github.com/tschaub))
+ * [#527](https://github.com/tschaub/gh-pages/pull/527) - Bump actions/setup-node from 3 to 4 ([@tschaub](https://github.com/tschaub))
+ * [#533](https://github.com/tschaub/gh-pages/pull/533) - Add --nojekyll and --cname options ([@tschaub](https://github.com/tschaub))
+ * [#512](https://github.com/tschaub/gh-pages/pull/512) - Bump dir-compare from 4.0.0 to 4.2.0 ([@tschaub](https://github.com/tschaub))
+ * [#513](https://github.com/tschaub/gh-pages/pull/513) - Bump chai from 4.3.7 to 4.3.8 ([@tschaub](https://github.com/tschaub))
+ * [#515](https://github.com/tschaub/gh-pages/pull/515) - Bump actions/checkout from 3 to 4 ([@tschaub](https://github.com/tschaub))
+ * [#516](https://github.com/tschaub/gh-pages/pull/516) - Bump eslint from 8.46.0 to 8.49.0 ([@tschaub](https://github.com/tschaub))
+
 ## v6.0.0
 
 This release drops support for Node 14.  Otherwise, there are no special upgrade considerations.
