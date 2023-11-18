@@ -43,6 +43,11 @@ describe('gh-pages', () => {
         config: {dotfiles: true},
       },
       {
+        args: ['--dist', 'lib', '--nojekyll'],
+        dist: 'lib',
+        config: {nojekyll: true},
+      },
+      {
         args: ['--dist', 'lib', '--dest', 'target'],
         dist: 'lib',
         config: {dest: 'target'},

@@ -128,6 +128,35 @@ Example use of the `dotfiles` option:
 ghpages.publish('dist', {dotfiles: true}, callback);
 ```
 
+#### <a id="optionsnojekyll">options.nojekyll</a>
+ * type: `boolean`
+ * default: `false`
+
+Write out a `.nojekyll` file to [bypass Jekyll on GitHub Pages](https://github.blog/2009-12-29-bypassing-jekyll-on-github-pages/).
+
+Example use of the `nojekyll` option:
+
+```js
+/**
+ * The usage below will add a `.nojekyll` file to the output.
+ */
+ghpages.publish('dist', {nojekyll: true}, callback);
+```
+
+#### <a id="optionscname">options.cname</a>
+ * type: `string`
+
+Write out a `CNAME` file with a custom domain name.
+
+Example use of the `cname` option:
+
+```js
+/**
+ * The usage below will add a `CNAME` file to the output.
+ */
+ghpages.publish('dist', {cname: 'custom-domain.com'}, callback);
+```
+
 
 #### <a id="optionsadd">options.add</a>
  * type: `boolean`
@@ -402,10 +431,10 @@ If `gh-pages` fails, you may find that you need to manually clean up the cache d
 
 ### Deploying to github pages with custom domain
 
-Modify the deployment line to your deploy script if you use custom domain. This will prevent the deployment from removing the domain settings in GitHub.
+Use the `--cname` option to create a `CNAME` file with the name of your custom domain.  See [the GitHub docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site) for more detail.
 
 ```
-echo your_cutom_domain.online > ./build/CNAME && gh-pages -d build"
+gh-pages -d build --cname custom-domain.com"
 ```
 
 ### Deploying with GitHub Actions

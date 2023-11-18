@@ -51,6 +51,11 @@ function main(args) {
       .option('-g, --tag <tag>', 'add tag to commit')
       .option('--git <git>', 'Path to git executable', ghpages.defaults.git)
       .option('-t, --dotfiles', 'Include dotfiles')
+      .option('--nojekyll', 'Add a .nojekyll file to disable Jekyll')
+      .option(
+        '--cname <CNAME>',
+        'Add a CNAME file with the name of your custom domain'
+      )
       .option('-r, --repo <repo>', 'URL of the repository you are pushing to')
       .option('-p, --depth <depth>', 'depth for clone', ghpages.defaults.depth)
       .option(
@@ -121,6 +126,7 @@ function main(args) {
       git: options.git,
       depth: options.depth,
       dotfiles: !!options.dotfiles,
+      nojekyll: !!options.nojekyll,
       add: !!options.add,
       remove: options.remove,
       remote: options.remote,
