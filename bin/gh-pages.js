@@ -134,6 +134,7 @@ function main(args) {
       history: !!options.history,
       user: user,
       beforeAdd: beforeAdd,
+      cname: options.cname,
     };
 
     return publish(options.dist, config);
