@@ -1,3 +1,10 @@
+## v6.1.1
+
+This release fixes an issue with the `--cname` option.
+
+ * [#535](https://github.com/tschaub/gh-pages/pull/535) - fix: Add missing cname option not passed to the config ([@WillBAnders](https://github.com/WillBAnders))
+ * [#539](https://github.com/tschaub/gh-pages/pull/539) - Bump eslint from 8.55.0 to 8.56.0 ([@tschaub](https://github.com/tschaub))
+
 ## v6.1.0
 
 This release adds support for `--nojekyll` and `--cname` options.
