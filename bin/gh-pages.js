@@ -127,6 +127,7 @@ function main(args) {
       depth: options.depth,
       dotfiles: !!options.dotfiles,
       nojekyll: !!options.nojekyll,
+      cname: options.cname,
       add: !!options.add,
       remove: options.remove,
       remote: options.remote,

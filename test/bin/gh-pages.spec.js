@@ -48,6 +48,11 @@ describe('gh-pages', () => {
         config: {nojekyll: true},
       },
       {
+        args: ['--dist', 'lib', '--cname', 'CNAME'],
+        dist: 'lib',
+        config: {cname: 'CNAME'},
+      },
+      {
         args: ['--dist', 'lib', '--dest', 'target'],
         dist: 'lib',
         config: {dest: 'target'},
