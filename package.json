@@ -1,6 +1,6 @@
 {
   "name": "gh-pages",
-  "version": "6.1.0",
+  "version": "6.1.1",
   "description": "Publish to a gh-pages branch on GitHub (or any other branch on any other remote)",
   "keywords": [
     "git",
