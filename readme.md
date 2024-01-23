@@ -392,7 +392,7 @@ Examples:
 - Create React App (which uses webpack under the hood) [requires the user to set a `"homepage"` property in their `package.json` so that built assets are referenced correctly in the final compiled HTML](https://create-react-app.dev/docs/deployment/#building-for-relative-paths).
   - This [has been often been thought of as an issue with `gh-pages`](https://github.com/tschaub/gh-pages/issues/285#issuecomment-805321474), though this package isn't able to control a project's build configuration.
 - Vite [requires a `"base"` property in its `vite.config.js`](https://vitejs.dev/guide/static-deploy.html#github-pages)
-- Next.js does not support deploying to GitHub Pages [because of an opinionated static export approach that puts all assets under a `_next` direcotry that GitHub Pages ignores](https://github.com/vercel/next.js/issues/9460).
+- Next.js [requires a `"basePath"` property in its `next.config.js`](https://nextjs.org/docs/pages/api-reference/next-config-js/basePath)
 
 When using a project site, be sure to read the documentation for your particular build tool or framework to learn how to configure correct asset paths.
 
