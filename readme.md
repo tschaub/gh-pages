@@ -446,7 +446,7 @@ In order to deploy with GitHub Actions, you will need to define a user and set t
   run: |
     git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
     npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
-   env:
+  env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
