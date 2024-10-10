@@ -1,3 +1,24 @@
+## v6.2.0
+
+Assorted dependency updates and a documentation change.
+
+ * [#581](https://github.com/tschaub/gh-pages/pull/581) - Update globby ([@tschaub](https://github.com/tschaub))
+ * [#578](https://github.com/tschaub/gh-pages/pull/578) - Bump sinon from 18.0.0 to 19.0.2 ([@tschaub](https://github.com/tschaub))
+ * [#579](https://github.com/tschaub/gh-pages/pull/579) - Bump eslint from 8.57.0 to 8.57.1 ([@tschaub](https://github.com/tschaub))
+ * [#576](https://github.com/tschaub/gh-pages/pull/576) - Bump async from 3.2.5 to 3.2.6 ([@tschaub](https://github.com/tschaub))
+ * [#573](https://github.com/tschaub/gh-pages/pull/573) - Bump mocha from 10.7.0 to 10.7.3 ([@tschaub](https://github.com/tschaub))
+ * [#571](https://github.com/tschaub/gh-pages/pull/571) - Bump mocha from 10.6.0 to 10.7.0 ([@tschaub](https://github.com/tschaub))
+ * [#569](https://github.com/tschaub/gh-pages/pull/569) - Bump mocha from 10.4.0 to 10.6.0 ([@tschaub](https://github.com/tschaub))
+ * [#563](https://github.com/tschaub/gh-pages/pull/563) - Bump braces from 3.0.2 to 3.0.3 ([@tschaub](https://github.com/tschaub))
+ * [#561](https://github.com/tschaub/gh-pages/pull/561) - Bump sinon from 17.0.2 to 18.0.0 ([@tschaub](https://github.com/tschaub))
+ * [#557](https://github.com/tschaub/gh-pages/pull/557) - Bump sinon from 17.0.1 to 17.0.2 ([@tschaub](https://github.com/tschaub))
+ * [#555](https://github.com/tschaub/gh-pages/pull/555) - Bump dir-compare from 4.2.0 to 5.0.0 ([@tschaub](https://github.com/tschaub))
+ * [#550](https://github.com/tschaub/gh-pages/pull/550) - Bump mocha from 10.3.0 to 10.4.0 ([@tschaub](https://github.com/tschaub))
+ * [#549](https://github.com/tschaub/gh-pages/pull/549) - Bump tmp from 0.2.1 to 0.2.3 ([@tschaub](https://github.com/tschaub))
+ * [#548](https://github.com/tschaub/gh-pages/pull/548) - Bump eslint from 8.56.0 to 8.57.0 ([@tschaub](https://github.com/tschaub))
+ * [#545](https://github.com/tschaub/gh-pages/pull/545) - Bump mocha from 10.2.0 to 10.3.0 ([@tschaub](https://github.com/tschaub))
+ * [#541](https://github.com/tschaub/gh-pages/pull/541) - fix: update instruction for next.js ([@multivoltage](https://github.com/multivoltage))
+
 ## v6.1.1
 
 This release fixes an issue with the `--cname` option.
