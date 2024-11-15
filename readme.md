@@ -37,6 +37,7 @@ If a `gh-pages` branch already exists, it will be updated with all commits from 
 
 ### <a id="dir">`dir`</a>
 * type: `string`
+* `-d | --dist <dist>`
 
 The base directory for all source files (those listed in the `src` config property).
 
@@ -70,6 +71,7 @@ The default options work for simple cases.  The options described below let you 
 #### <a id="optionssrc">options.src</a>
  * type: `string|Array<string>`
  * default: `'**/*'`
+ * `-s | --src <src>`
 
 The [minimatch](https://github.com/isaacs/minimatch) pattern or array of patterns is used to select which files should be published.
 
@@ -97,6 +99,7 @@ ghpages.publish('dist', {
 #### <a id="optionsdest">options.dest</a>
  * type: `string`
  * default: `'.'`
+ * `-e | --dest <dest>`
 
 The destination folder within the destination branch.  By default, all files are published to the root of the repository.
 
@@ -115,6 +118,7 @@ ghpages.publish('dist', {
 #### <a id="optionsdotfiles">options.dotfiles</a>
  * type: `boolean`
  * default: `false`
+ * `-t | --dotfiles <true|false>`
 
 Include dotfiles.  By default, files starting with `.` are ignored unless they are explicitly provided in the `src` array.  If you want to also include dotfiles that otherwise match your `src` patterns, set `dotfiles: true` in your options.
 
@@ -161,6 +165,7 @@ ghpages.publish('dist', {cname: 'custom-domain.com'}, callback);
 #### <a id="optionsadd">options.add</a>
  * type: `boolean`
  * default: `false`
+ * `-a | --add <true|false>`
 
 Only add, and never remove existing files.  By default, existing files in the target branch are removed before adding the ones from your `src` config.  If you want the task to add new `src` files but leave existing ones untouched, set `add: true` in your options.
 
@@ -201,6 +206,7 @@ ghpages.publish('dist', {
 #### <a id="optionsremote">options.remote</a>
  * type: `string`
  * default: `'origin'`
+ * `-o | --remote <name>`
 
 The name of the remote you'll be pushing to.  The default is your `'origin'` remote, but this can be configured to push to any remote.
 
@@ -219,6 +225,7 @@ ghpages.publish('dist', {
 #### <a id="optionstag">options.tag</a>
  * type: `string`
  * default: `''`
+ * `-g | --tag <tag>`
 
 Create a tag after committing changes on the target branch.  By default, no tag is created.  To create a tag, provide the tag name as the option value.
 
@@ -226,6 +233,7 @@ Create a tag after committing changes on the target branch.  By default, no tag 
 #### <a id="optionsmessage">options.message</a>
  * type: `string`
  * default: `'Updates'`
+ * `-m | --message <message>`
 
 The commit message for all commits.
 
@@ -244,6 +252,7 @@ ghpages.publish('dist', {
 #### <a id="optionsuser">options.user</a>
  * type: `Object`
  * default: `null`
+ * `-u | --user "Your Name <email@example.com>"`
 
 If you are running the `gh-pages` task in a repository without a `user.name` or `user.email` git config properties (or on a machine without these global config properties), you must provide user info before git allows you to commit.  The `options.user` object accepts `name` and `email` string values to identify the committer.
 
@@ -258,9 +267,10 @@ ghpages.publish('dist', {
 }, callback);
 ```
 
-#### <a id="optionsuser">options.remove</a>
+#### <a id="optionsremove">options.remove</a>
  * type: `string`
  * default: `'.'`
+ * `-v | --remove <pattern>`
 
 Removes files that match the given pattern (Ignored if used together with
 `--add`). By default, `gh-pages` removes everything inside the target branch
@@ -278,6 +288,7 @@ ghpages.publish('dist', {
 #### <a id="optionspush">options.push</a>
  * type: `boolean`
  * default: `true`
+ * `-n | --no-push <true|false>`
 
 Push branch to remote.  To commit only (with no push) set to `false`.
 
@@ -291,6 +302,7 @@ ghpages.publish('dist', {push: false}, callback);
 #### <a id="optionshistory">options.history</a>
  * type: `boolean`
  * default: `true`
+ * `-f | --no-history <true|false>`
 
 Push force new commit without parent history.
 
@@ -304,6 +316,7 @@ ghpages.publish('dist', {history: false}, callback);
 #### <a id="optionssilent">options.silent</a>
  * type: `boolean`
  * default: `false`
+ * `-x | --silent <true|false>`
 
 Avoid showing repository URLs or other information in errors.
 
@@ -323,6 +336,7 @@ ghpages.publish('dist', {
 #### <a id="optionsbeforeadd">options.beforeAdd</a>
  * type: `function`
  * default: `null`
+ * `--before-add <file>`
 
 Custom callback that is executed right before `git add`.
 
@@ -352,6 +366,7 @@ ghpages.publish('dist', {
 #### <a id="optionsgit">options.git</a>
  * type: `string`
  * default: `'git'`
+ * `--git <git>`
 
 Your `git` executable.
 
