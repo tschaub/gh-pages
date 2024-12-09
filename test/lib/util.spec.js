@@ -1,6 +1,7 @@
 const path = require('path');
-const assert = require('../helper.js').assert;
+const {beforeEach, describe, it} = require('mocha');
 const util = require('../../lib/util.js');
+const assert = require('../helper.js').assert;
 const helper = require('../helper.js');
 
 describe('util', () => {

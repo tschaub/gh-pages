@@ -1,6 +1,7 @@
-const ghpages = require('../../lib/index.js');
+const {afterEach, beforeEach, describe, it} = require('mocha');
 const sinon = require('sinon');
 const cli = require('../../bin/gh-pages.js');
+const ghpages = require('../../lib/index.js');
 const assert = require('../helper.js').assert;
 const beforeAdd = require('./fixtures/beforeAdd.js');
 

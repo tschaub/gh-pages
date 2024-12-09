@@ -45,8 +45,8 @@
   "devDependencies": {
     "chai": "^4.3.7",
     "dir-compare": "^5.0.0",
-    "eslint": "^8.32.0",
-    "eslint-config-tschaub": "^14.1.2",
+    "eslint": "^9.16.0",
+    "eslint-config-tschaub": "^15.2.0",
     "mocha": "^11.0.1",
     "sinon": "^19.0.2",
     "tmp": "^0.2.1"
@@ -54,11 +54,5 @@
   "bin": {
     "gh-pages": "bin/gh-pages.js",
     "gh-pages-clean": "bin/gh-pages-clean.js"
-  },
-  "eslintConfig": {
-    "extends": "tschaub",
-    "rules": {
-      "jsdoc/check-examples": "off"
-    }
   }
 }
