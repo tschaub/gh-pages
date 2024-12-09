@@ -1,6 +1,7 @@
-const helper = require('../helper.js');
-const ghPages = require('../../lib/index.js');
 const path = require('path');
+const {beforeEach, describe, it} = require('mocha');
+const ghPages = require('../../lib/index.js');
+const helper = require('../helper.js');
 
 const fixtures = path.join(__dirname, 'fixtures');
 const fixtureName = 'include';

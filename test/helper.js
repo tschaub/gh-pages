@@ -1,9 +1,9 @@
-const chai = require('chai');
-const tmp = require('tmp');
 const path = require('path');
-const fs = require('fs-extra');
-const Git = require('../lib/git.js');
+const chai = require('chai');
 const compare = require('dir-compare').compareSync;
+const fs = require('fs-extra');
+const tmp = require('tmp');
+const Git = require('../lib/git.js');
 
 /**
  * Turn off maxListeners warning during the tests
@@ -22,6 +22,9 @@ exports.assert = chai.assert;
 
 const fixtures = path.join(__dirname, 'integration', 'fixtures');
 
+/**
+ * @return {Promise<string>} A promise that resolves to the path.
+ */
 function mkdtemp() {
   return new Promise((resolve, reject) => {
     tmp.dir({unsafeCleanup: true}, (err, tmpPath) => {
@@ -36,7 +39,7 @@ function mkdtemp() {
 /**
  * Creates a git repo with the contents of a fixture.
  * @param {string} fixtureName Name of fixture.
- * @param {object} options Repo options.
+ * @param {Object} options Repo options.
  * @return {Promise<string>} A promise for the path to the repo.
  */
 function setupRepo(fixtureName, options) {
@@ -60,7 +63,7 @@ function setupRepo(fixtureName, options) {
 /**
  * Creates a git repo with the contents of a fixture and pushes to a remote.
  * @param {string} fixtureName Name of the fixture.
- * @param {object} options Repo options.
+ * @param {Object} options Repo options.
  * @return {Promise} A promise.
  */
 function setupRemote(fixtureName, options) {
@@ -74,10 +77,16 @@ function setupRemote(fixtureName, options) {
         const git = new Git(dir);
         const url = 'file://' + remote;
         return git.exec('push', url, branch).then(() => url);
-      })
+      }),
   );
 }
 
+/**
+ * @param {string} dir The dir.
+ * @param {string} url The url.
+ * @param {string} branch The branch.
+ * @return {Promise} A promise.
+ */
 function assertContentsMatch(dir, url, branch) {
   return mkdtemp()
     .then((root) => {
@@ -109,6 +118,6 @@ function assertContentsMatch(dir, url, branch) {
     });
 }
 
-exports.setupRepo = setupRepo;
-exports.setupRemote = setupRemote;
 exports.assertContentsMatch = assertContentsMatch;
+exports.setupRemote = setupRemote;
+exports.setupRepo = setupRepo;
