@@ -59,7 +59,7 @@ describe('gh-pages', () => {
         config: {dest: 'target'},
       },
       {
-        args: ['--dist', 'lib', '-a', 'target'],
+        args: ['--dist', 'lib', '-a'],
         dist: 'lib',
         config: {add: true},
       },
