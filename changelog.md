@@ -1,3 +1,14 @@
+## v6.3.0
+
+This relesae includes a fix for filenames starting with `-` and a number of dependency updates. See below for details.
+
+ * [#593](https://github.com/tschaub/gh-pages/pull/593) - Handle filenames starting with a dash ([@sherlockdoyle](https://github.com/sherlockdoyle))
+ * [#591](https://github.com/tschaub/gh-pages/pull/591) - Bump commander from 11.1.0 to 13.0.0 ([@tschaub](https://github.com/tschaub))
+ * [#587](https://github.com/tschaub/gh-pages/pull/587) - Bump eslint-config-tschaub from 14.1.2 to 15.1.0 ([@tschaub](https://github.com/tschaub))
+ * [#590](https://github.com/tschaub/gh-pages/pull/590) - Bump mocha from 10.8.2 to 11.0.1 ([@tschaub](https://github.com/tschaub))
+ * [#583](https://github.com/tschaub/gh-pages/pull/583) - Bump mocha from 10.7.3 to 10.8.2 ([@tschaub](https://github.com/tschaub))
+ * [#584](https://github.com/tschaub/gh-pages/pull/584) - Bump chai from 4.3.10 to 4.5.0 ([@tschaub](https://github.com/tschaub))
+
 ## v6.2.0
 
 Assorted dependency updates and a documentation change.
