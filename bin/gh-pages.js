@@ -50,7 +50,7 @@ function main(args) {
       )
       .option('-g, --tag <tag>', 'add tag to commit')
       .option('--git <git>', 'Path to git executable', ghpages.defaults.git)
-      .option('-t, --dotfiles', 'Include dotfiles')
+      .option('-t, --dotfiles', 'Include dotfiles', ghpages.defaults.dotfiles)
       .option('--nojekyll', 'Add a .nojekyll file to disable Jekyll')
       .option(
         '--cname <CNAME>',
