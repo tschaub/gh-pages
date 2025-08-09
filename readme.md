@@ -258,9 +258,9 @@ ghpages.publish('dist', {
 }, callback);
 ```
 
-#### <a id="optionsuser">options.remove</a>
+#### <a id="optionsremove">options.remove</a>
  * type: `string`
- * default: `'.'`
+ * default: `'**/*'`
 
 Removes files that match the given pattern (Ignored if used together with
 `--add`). By default, `gh-pages` removes everything inside the target branch
