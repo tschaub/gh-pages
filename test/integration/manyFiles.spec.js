@@ -11,28 +11,20 @@ beforeEach(() => {
 });
 
 describe('a lot of files', () => {
-  it('successfully pushes the contents of a directory to a gh-pages branch', (done) => {
+  it('successfully pushes the contents of a directory to a gh-pages branch', async () => {
     const local = path.join(fixtures, fixtureName, 'local');
     const expected = path.join(fixtures, fixtureName, 'expected');
     const branch = 'gh-pages';
 
-    helper.setupRemote(fixtureName, {branch}).then((url) => {
-      const options = {
-        repo: url,
-        user: {
-          name: 'User Name',
-          email: 'user@email.com',
-        },
-      };
-      ghPages.publish(local, options, (err) => {
-        if (err) {
-          return done(err);
-        }
-        helper
-          .assertContentsMatch(expected, url, branch)
-          .then(() => done())
-          .catch(done);
-      });
-    });
+    const url = await helper.setupRemote(fixtureName, {branch});
+    const options = {
+      repo: url,
+      user: {
+        name: 'User Name',
+        email: 'user@email.com',
+      },
+    };
+    await ghPages.publish(local, options);
+    await helper.assertContentsMatch(expected, url, branch);
   });
 });

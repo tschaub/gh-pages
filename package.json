@@ -34,7 +34,6 @@
     "node": ">=10"
   },
   "dependencies": {
-    "async": "^3.2.4",
     "commander": "^14.0.0",
     "email-addresses": "^5.0.0",
     "filenamify": "^4.3.0",

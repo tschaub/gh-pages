@@ -11,29 +11,21 @@ beforeEach(() => {
 });
 
 describe('the --nojekyll option', () => {
-  it('works even if the .nojekyll file already exists', (done) => {
+  it('works even if the .nojekyll file already exists', async () => {
     const local = path.join(fixtures, fixtureName, 'local');
     const expected = path.join(fixtures, fixtureName, 'expected');
     const branch = 'gh-pages';
 
-    helper.setupRemote(fixtureName, {branch}).then((url) => {
-      const options = {
-        repo: url,
-        user: {
-          name: 'User Name',
-          email: 'user@email.com',
-        },
-        nojekyll: true,
-      };
-      ghPages.publish(local, options, (err) => {
-        if (err) {
-          return done(err);
-        }
-        helper
-          .assertContentsMatch(expected, url, branch)
-          .then(() => done())
-          .catch(done);
-      });
-    });
+    const url = await helper.setupRemote(fixtureName, {branch});
+    const options = {
+      repo: url,
+      user: {
+        name: 'User Name',
+        email: 'user@email.com',
+      },
+      nojekyll: true,
+    };
+    await ghPages.publish(local, options);
+    await helper.assertContentsMatch(expected, url, branch);
   });
 });

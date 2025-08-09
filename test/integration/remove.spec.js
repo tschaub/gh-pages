@@ -11,58 +11,42 @@ beforeEach(() => {
 });
 
 describe('the remove option', () => {
-  it('removes matched files in remote branch', (done) => {
+  it('removes matched files in remote branch', async () => {
     const local = path.join(fixtures, fixtureName, 'local');
     const expected = path.join(fixtures, fixtureName, 'expected');
     const branch = 'gh-pages';
     const remove = '*.{js,css}';
 
-    helper.setupRemote(fixtureName, {branch}).then((url) => {
-      const options = {
-        repo: url,
-        user: {
-          name: 'User Name',
-          email: 'user@email.com',
-        },
-        remove: remove,
-      };
+    const url = await helper.setupRemote(fixtureName, {branch});
+    const options = {
+      repo: url,
+      user: {
+        name: 'User Name',
+        email: 'user@email.com',
+      },
+      remove: remove,
+    };
 
-      ghPages.publish(local, options, (err) => {
-        if (err) {
-          return done(err);
-        }
-        helper
-          .assertContentsMatch(expected, url, branch)
-          .then(() => done())
-          .catch(done);
-      });
-    });
+    await ghPages.publish(local, options);
+    await helper.assertContentsMatch(expected, url, branch);
   });
 
-  it('skips removing files if there are no files to be removed', (done) => {
+  it('skips removing files if there are no files to be removed', async () => {
     const local = path.join(fixtures, fixtureName, 'remote');
     const branch = 'gh-pages';
     const remove = 'non-exist-file';
 
-    helper.setupRemote(fixtureName, {branch}).then((url) => {
-      const options = {
-        repo: url,
-        user: {
-          name: 'User Name',
-          email: 'user@email.com',
-        },
-        remove: remove,
-      };
+    const url = await helper.setupRemote(fixtureName, {branch});
+    const options = {
+      repo: url,
+      user: {
+        name: 'User Name',
+        email: 'user@email.com',
+      },
+      remove: remove,
+    };
 
-      ghPages.publish(local, options, (err) => {
-        if (err) {
-          return done(err);
-        }
-        helper
-          .assertContentsMatch(local, url, branch)
-          .then(() => done())
-          .catch(done);
-      });
-    });
+    await ghPages.publish(local, options);
+    await helper.assertContentsMatch(local, url, branch);
   });
 });
