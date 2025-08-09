@@ -46,87 +46,16 @@ describe('util', () => {
     });
   });
 
-  describe('uniqueDirs', () => {
-    it('gets a list of unique directory paths', () => {
-      // not comparing order here, so we sort both
-      const got = util.uniqueDirs(files).sort();
-
-      const expected = [
-        '.',
-        'a1',
-        'a2',
-        path.join('a1', 'b1'),
-        path.join('a1', 'b1', 'c1'),
-        path.join('a1', 'b1', 'c2'),
-        path.join('a1', 'b2'),
-        path.join('a1', 'b2', 'c1'),
-        path.join('a1', 'b2', 'c2'),
-        path.join('a2', 'b1'),
-      ].sort();
-
-      assert.deepEqual(got, expected);
-    });
-
-    it('gets a list of unique directories on absolute paths', () => {
-      const absoluteFiles = files.map((path) => {
-        return '/' + path;
-      });
-      // not comparing order here, so we sort both
-      const got = util.uniqueDirs(absoluteFiles).sort();
-
-      const expected = [
-        '/',
-        '/a1',
-        '/a2',
-        path.join('/a1', 'b1'),
-        path.join('/a1', 'b1', 'c1'),
-        path.join('/a1', 'b1', 'c2'),
-        path.join('/a1', 'b2'),
-        path.join('/a1', 'b2', 'c1'),
-        path.join('/a1', 'b2', 'c2'),
-        path.join('/a2', 'b1'),
-      ].sort();
-
-      assert.deepEqual(got, expected);
-    });
-  });
-
-  describe('dirsToCreate', () => {
-    it('gets a sorted list of directories to create', () => {
-      const got = util.dirsToCreate(files);
-
-      const expected = [
-        '.',
-        'a1',
-        'a2',
-        path.join('a1', 'b1'),
-        path.join('a1', 'b2'),
-        path.join('a2', 'b1'),
-        path.join('a1', 'b1', 'c1'),
-        path.join('a1', 'b1', 'c2'),
-        path.join('a1', 'b2', 'c1'),
-        path.join('a1', 'b2', 'c2'),
-      ];
-
-      assert.deepEqual(got, expected);
-    });
-  });
-
   describe('getUser', () => {
-    it('gets the locally configured user', (done) => {
+    it('gets the locally configured user', async () => {
       const name = 'Full Name';
       const email = 'email@example.com';
 
-      helper.setupRepo('basic', {user: {name, email}}).then((dir) => {
-        util
-          .getUser(dir)
-          .then((user) => {
-            assert.equal(user.name, name);
-            assert.equal(user.email, email);
-            done();
-          })
-          .catch(done);
-      });
+      const dir = await helper.setupRepo('basic', {user: {name, email}});
+      const user = await util.getUser(dir);
+
+      assert.equal(user.name, name);
+      assert.equal(user.email, email);
     });
   });
 });

@@ -42,22 +42,22 @@ function mkdtemp() {
  * @param {Object} options Repo options.
  * @return {Promise<string>} A promise for the path to the repo.
  */
-function setupRepo(fixtureName, options) {
+async function setupRepo(fixtureName, options) {
   const branch = options.branch || 'gh-pages';
   const userEmail = (options.user && options.user.email) || 'user@email.com';
   const userName = (options.user && options.user.name) || 'User Name';
-  return mkdtemp()
-    .then((dir) => {
-      const fixturePath = path.join(fixtures, fixtureName, 'remote');
-      return fs.copy(fixturePath, dir).then(() => new Git(dir));
-    })
-    .then((git) => git.init())
-    .then((git) => git.exec('config', 'user.email', userEmail))
-    .then((git) => git.exec('config', 'user.name', userName))
-    .then((git) => git.exec('checkout', '--orphan', branch))
-    .then((git) => git.add('.'))
-    .then((git) => git.commit('Initial commit'))
-    .then((git) => git.cwd);
+  const dir = await mkdtemp();
+  const fixturePath = path.join(fixtures, fixtureName, 'remote');
+  await fs.copy(fixturePath, dir);
+
+  const git = new Git(dir);
+  await git.init();
+  await git.exec('config', 'user.email', userEmail);
+  await git.exec('config', 'user.name', userName);
+  await git.exec('checkout', '--orphan', branch);
+  await git.add('.');
+  await git.commit('Initial commit');
+  return git.cwd;
 }
 
 /**
@@ -66,19 +66,16 @@ function setupRepo(fixtureName, options) {
  * @param {Object} options Repo options.
  * @return {Promise} A promise.
  */
-function setupRemote(fixtureName, options) {
+async function setupRemote(fixtureName, options) {
   const branch = options.branch || 'gh-pages';
-  return setupRepo(fixtureName, options).then((dir) =>
-    mkdtemp()
-      .then((remote) => {
-        return new Git(remote).exec('init', '--bare').then(() => remote);
-      })
-      .then((remote) => {
-        const git = new Git(dir);
-        const url = 'file://' + remote;
-        return git.exec('push', url, branch).then(() => url);
-      }),
-  );
+  const dir = await setupRepo(fixtureName, options);
+  const remote = await mkdtemp();
+  await new Git(remote).exec('init', '--bare');
+  const remote_1 = remote;
+  const git = new Git(dir);
+  const url = 'file://' + remote_1;
+  await git.exec('push', url, branch);
+  return url;
 }
 
 /**
@@ -87,35 +84,31 @@ function setupRemote(fixtureName, options) {
  * @param {string} branch The branch.
  * @return {Promise} A promise.
  */
-function assertContentsMatch(dir, url, branch) {
-  return mkdtemp()
-    .then((root) => {
-      const clone = path.join(root, 'repo');
-      const options = {git: 'git', remote: 'origin', depth: 1};
-      return Git.clone(url, clone, branch, options);
-    })
-    .then((git) => {
-      const comparison = compare(dir, git.cwd, {excludeFilter: '.git'});
-      if (comparison.same) {
-        return true;
-      } else {
-        const message = comparison.diffSet
-          .map((entry) => {
-            const state = {
-              equal: '==',
-              left: '->',
-              right: '<-',
-              distinct: '<>',
-            }[entry.state];
-            const name1 = entry.name1 ? entry.name1 : '<none>';
-            const name2 = entry.name2 ? entry.name2 : '<none>';
+async function assertContentsMatch(dir, url, branch) {
+  const root = await mkdtemp();
+  const clone = path.join(root, 'repo');
+  const options = {git: 'git', remote: 'origin', depth: 1};
+  const git = await Git.clone(url, clone, branch, options);
+  const comparison = compare(dir, git.cwd, {excludeFilter: '.git'});
+  if (comparison.same) {
+    return true;
+  } else {
+    const message = comparison.diffSet
+      .map((entry) => {
+        const state = {
+          equal: '==',
+          left: '->',
+          right: '<-',
+          distinct: '<>',
+        }[entry.state];
+        const name1 = entry.name1 ? entry.name1 : '<none>';
+        const name2 = entry.name2 ? entry.name2 : '<none>';
 
-            return [name1, state, name2].join(' ');
-          })
-          .join('\n');
-        throw new Error('Directories do not match:\n' + message);
-      }
-    });
+        return [name1, state, name2].join(' ');
+      })
+      .join('\n');
+    throw new Error('Directories do not match:\n' + message);
+  }
 }
 
 exports.assertContentsMatch = assertContentsMatch;
