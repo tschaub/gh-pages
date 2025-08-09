@@ -92,7 +92,7 @@ function assertContentsMatch(dir, url, branch) {
     .then((root) => {
       const clone = path.join(root, 'repo');
       const options = {git: 'git', remote: 'origin', depth: 1};
-      return Git.clone(url, clone, branch, options);
+      return Git.clone([url, url], clone, branch, options);
     })
     .then((git) => {
       const comparison = compare(dir, git.cwd, {excludeFilter: '.git'});
