@@ -10,7 +10,7 @@ describe('gh-pages', () => {
     beforeEach(() => {
       sinon
         .stub(ghpages, 'publish')
-        .callsFake((basePath, config, callback) => callback());
+        .callsFake((basePath, config, callback) => callback && callback());
     });
 
     afterEach(() => {
