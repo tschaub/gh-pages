@@ -36,8 +36,8 @@
   "dependencies": {
     "commander": "^14.0.0",
     "email-addresses": "^5.0.0",
-    "filenamify": "^4.3.0",
-    "find-cache-dir": "^3.3.1",
+    "filenamify": "^7.0.1",
+    "find-cache-dir": "^6.0.0",
     "fs-extra": "^11.1.1",
     "tinyglobby": "^0.2.14"
   },
