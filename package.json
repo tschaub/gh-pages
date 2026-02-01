@@ -42,7 +42,7 @@
     "tinyglobby": "^0.2.14"
   },
   "devDependencies": {
-    "chai": "^4.3.7",
+    "chai": "^6.2.2",
     "dir-compare": "^5.0.0",
     "eslint": "^9.16.0",
     "eslint-config-tschaub": "^15.2.0",
