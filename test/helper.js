@@ -1,7 +1,7 @@
+const fs = require('node:fs');
 const path = require('path');
 const chai = require('chai');
 const compare = require('dir-compare').compareSync;
-const fs = require('fs-extra');
 const tmp = require('tmp');
 const Git = require('../lib/git.js');
 
@@ -48,7 +48,7 @@ async function setupRepo(fixtureName, options) {
   const userName = (options.user && options.user.name) || 'User Name';
   const dir = await mkdtemp();
   const fixturePath = path.join(fixtures, fixtureName, 'remote');
-  await fs.copy(fixturePath, dir);
+  fs.cpSync(fixturePath, dir, {recursive: true});
 
   const git = new Git(dir);
   await git.init();
