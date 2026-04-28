@@ -1,4 +1,5 @@
 const path = require('path');
+const { pathToFileURL } = require('url');
 const chai = require('chai');
 const compare = require('dir-compare').compareSync;
 const fs = require('fs-extra');
@@ -73,7 +74,7 @@ async function setupRemote(fixtureName, options) {
   await new Git(remote).exec('init', '--bare');
   const remote_1 = remote;
   const git = new Git(dir);
-  const url = 'file://' + remote_1;
+  const url = pathToFileURL(remote_1).href;
   await git.exec('push', url, branch);
   return url;
 }
@@ -114,3 +115,4 @@ async function assertContentsMatch(dir, url, branch) {
 exports.assertContentsMatch = assertContentsMatch;
 exports.setupRemote = setupRemote;
 exports.setupRepo = setupRepo;
+exports.mkdtemp = mkdtemp;
